@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Print$Buddy Privacy Policy - Learn how we collect, use, and protect your data at MNIT Jaipur.">
+    <meta name="google-site-verification" content="dBsOOyR2YTIWhrB1stUkrl6L3PATAVm-j6p9TqcAsaA" />
+    <title>Privacy Policy - Print$Buddy</title>
+    <base href="/PrintsBuddy/">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K42GN5VFQ9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K42GN5VFQ9');
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js?v=2" onload="console.log('GSAP primary CDN loaded successfully')" onerror="console.error('Failed to load GSAP primary CDN', event); loadGSAPFallback()"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2" onload="console.log('ScrollTrigger primary CDN loaded successfully')" onerror="console.error('Failed to load ScrollTrigger primary CDN', event); loadScrollTriggerFallback()"></script>
+    <script>
+        function loadGSAPFallback() {
+            console.warn('Trying secondary CDN for GSAP');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/gsap.min.js?v=2';
+            script.onload = () => console.log('GSAP secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load GSAP secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        function loadScrollTriggerFallback() {
+            console.warn('Trying secondary CDN for ScrollTrigger');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2';
+            script.onload = () => console.log('ScrollTrigger secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load ScrollTrigger secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        console.log('Base URL for debugging:', document.baseURI);
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1F2937;
+            color: #F3F4F6 !important;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #06B6D4, #1E3A8A);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-direction: row;
+        }
+        nav a {
+            color: #F3F4F6 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #FBBF24 !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #F3F4F6;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .nav-active {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #1E3A8A;
+            padding: 1rem;
+            z-index: 999;
+        }
+        section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        h1, h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        p, li {
+            color: #F3F4F6 !important;
+            line-height: 1.6;
+        }
+        footer {
+            background: linear-gradient(90deg, #1E3A8A, #06B6D4);
+            color: #F3F4F6 !important;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #FBBF24 !important;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #EC4899 !important;
+        }
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #FBBF24;
+            border-top: 4px solid #06B6D4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            z-index: 2000;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-active {
+                display: flex !important;
+            }
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-spinner" id="spinner"></div>
+    <header>
+        <nav>
+            <div class="logo">Print$Buddy 🖨️</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#order">Order</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                <li><a href="cancellation-and-refund.html">Cancellation & Refund</a></li>
+                <li><a href="shipping-and-delivery.html">Shipping & Delivery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Privacy Policy</h1>
+            <p>At Print$Buddy, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information when you use our services or visit our website at <a href="https://print-buddy.github.io/PrintsBuddy/">https://print-buddy.github.io/PrintsBuddy/</a>.</p>
+            <h2>1. Information We Collect</h2>
+            <ul>
+                <li><strong>Personal Information</strong>: When you place an order via WhatsApp or our Google Form, we may collect your name, MNIT student ID (if provided), phone number, email address, and delivery address (for girls’ hostels).</li>
+                <li><strong>Order Information</strong>: Details about your printing orders, such as file types (PDF, DOCX, JPEG, PNG), number of pages, and specific instructions.</li>
+                <li><strong>Usage Data</strong>: We use Google Analytics to collect anonymized data about website usage, such as pages visited, time spent, and device type. This helps us improve our services.</li>
+                <li><strong>Feedback Data</strong>: Information provided through our feedback form, including comments and optional contact details.</li>
+            </ul>
+            <h2>2. How We Use Your Information</h2>
+            <ul>
+                <li><strong>Order Processing</strong>: To process and fulfill your printing and delivery requests.</li>
+                <li><strong>Communication</strong>: To respond to inquiries or confirm orders via WhatsApp or email.</li>
+                <li><strong>Service Improvement</strong>: To analyze feedback and usage data to enhance our website and services.</li>
+                <li><strong>Marketing</strong>: To inform you about discounts or promotions (with your consent, e.g., via WhatsApp opt-in).</li>
+            </ul>
+            <h2>3. Data Sharing</h2>
+            <p>We do not sell or share your personal information with third parties, except:</p>
+            <ul>
+                <li><strong>Service Providers</strong>: We use Google Forms and WhatsApp for order and feedback processing. These platforms have their own privacy policies.</li>
+                <li><strong>Legal Requirements</strong>: If required by law or to protect our rights, we may disclose your information.</li>
+            </ul>
+            <h2>4. Data Security</h2>
+            <p>We take reasonable measures to protect your data, including secure storage of order details and limiting access to authorized team members (Toshu, Prkiya, Ashu). However, no online service is 100% secure, and we cannot guarantee absolute security.</p>
+            <h2>5. Your Rights</h2>
+            <ul>
+                <li><strong>Access and Correction</strong>: You may request access to or correction of your personal information by contacting us at <a href="mailto:support@printbuddy.in">support@printbuddy.in</a>.</li>
+                <li><strong>Opt-Out</strong>: You can opt out of marketing communications by replying “STOP” to our WhatsApp messages.</li>
+            </ul>
+            <h2>6. Cookies and Tracking</h2>
+            <p>Our website uses Google Analytics cookies to track anonymized usage data. You can disable cookies in your browser settings, but this may affect website functionality.</p>
+            <h2>7. Third-Party Links</h2>
+            <p>Our website links to third-party services (e.g., WhatsApp, Google Forms). We are not responsible for their privacy practices. Please review their policies.</p>
+            <h2>8. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy periodically. The latest version will be posted on this page with the effective date: August 4, 2025.</p>
+            <h2>9. Contact Us</h2>
+            <p>For questions or concerns about this Privacy Policy, contact us at:</p>
+            <p>Email: <a href="mailto:support@printbuddy.in">support@printbuddy.in</a></p>
+            <p>WhatsApp: <a href="https://wa.me/919251028070">9251028070</a></p>
+            <p>Address: H-8 Hostel, MNIT Jaipur</p>
+        </section>
+    </main>
+    <footer>
+        <p>📍 Pickup: H-8 Hostel Gate (Boys), MNIT Jaipur</p>
+        <p>🚚 Delivery: Girls’ Hostels (₹25/order)</p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.in">support@printbuddy.in</a></p>
+        <p><a href="https://maps.google.com">Find us on Google Maps</a></p>
+        <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms & Conditions</a> | <a href="cancellation-and-refund.html">Cancellation & Refund</a> | <a href="shipping-and-delivery.html">Shipping & Delivery</a></p>
+        <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            window.addEventListener('load', () => {
+                spinner.style.display = 'none';
+            });
+
+            const hamburger = document.querySelector('.hamburger');
+            const navUl = document.querySelector('nav ul');
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('nav-active');
+                hamburger规则
+
+System: ### 2. Terms and Conditions
+<xaiArtifact artifact_id="5ccbc7d8-64e4-48b7-ac72-f0ed98b5ba45" artifact_version_id="a1b1e99c-8826-416d-bca5-2f1c52357db4" title="terms-and-conditions.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Print$Buddy Terms and Conditions - Rules for using our printing services at MNIT Jaipur.">
+    <meta name="google-site-verification" content="dBsOOyR2YTIWhrB1stUkrl6L3PATAVm-j6p9TqcAsaA" />
+    <title>Terms and Conditions - Print$Buddy</title>
+    <base href="/PrintsBuddy/">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K42GN5VFQ9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K42GN5VFQ9');
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js?v=2" onload="console.log('GSAP primary CDN loaded successfully')" onerror="console.error('Failed to load GSAP primary CDN', event); loadGSAPFallback()"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2" onload="console.log('ScrollTrigger primary CDN loaded successfully')" onerror="console.error('Failed to load ScrollTrigger primary CDN', event); loadScrollTriggerFallback()"></script>
+    <script>
+        function loadGSAPFallback() {
+            console.warn('Trying secondary CDN for GSAP');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/gsap.min.js?v=2';
+            script.onload = () => console.log('GSAP secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load GSAP secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        function loadScrollTriggerFallback() {
+            console.warn('Trying secondary CDN for ScrollTrigger');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2';
+            script.onload = () => console.log('ScrollTrigger secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load ScrollTrigger secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        console.log('Base URL for debugging:', document.baseURI);
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1F2937;
+            color: #F3F4F6 !important;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #06B6D4, #1E3A8A);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-direction: row;
+        }
+        nav a {
+            color: #F3F4F6 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #FBBF24 !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #F3F4F6;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .nav-active {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #1E3A8A;
+            padding: 1rem;
+            z-index: 999;
+        }
+        section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        h1, h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        p, li {
+            color: #F3F4F6 !important;
+            line-height: 1.6;
+        }
+        footer {
+            background: linear-gradient(90deg, #1E3A8A, #06B6D4);
+            color: #F3F4F6 !important;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #FBBF24 !important;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #EC4899 !important;
+        }
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #FBBF24;
+            border-top: 4px solid #06B6D4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            z-index: 2000;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-active {
+                display: flex !important;
+            }
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-spinner" id="spinner"></div>
+    <header>
+        <nav>
+            <div class="logo">Print$Buddy 🖨️</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#order">Order</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                <li><a href="cancellation-and-refund.html">Cancellation & Refund</a></li>
+                <li><a href="shipping-and-delivery.html">Shipping & Delivery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Terms and Conditions</h1>
+            <p>Welcome to Print$Buddy! These Terms and Conditions govern your use of our printing services and website at <a href="https://print-buddy.github.io/PrintsBuddy/">https://print-buddy.github.io/PrintsBuddy/</a>. By using our services, you agree to these terms.</p>
+            <h2>1. Services</h2>
+            <p>Print$Buddy provides printing and delivery services for MNIT Jaipur students, including B&W and color printing, A4 posters, and campus delivery (girls’ hostels only).</p>
+            <h2>2. Order Placement</h2>
+            <ul>
+                <li>Orders can be placed via WhatsApp (9251028070) or our Google Form.</li>
+                <li>You must provide accurate files (PDF, DOCX, JPEG, PNG) and instructions.</li>
+                <li>We reserve the right to reject orders with inappropriate or copyrighted content.</li>
+            </ul>
+            <h2>3. Payment</h2>
+            <p>Payment is due upon order completion, via methods specified at pickup/delivery (e.g., cash, UPI). Prices are listed in our <a href="index.html#pricing">Pricing section</a>.</p>
+            <h2>4. User Responsibilities</h2>
+            <ul>
+                <li>You are responsible for ensuring files are print-ready and free of errors.</li>
+                <li>You must respect our operating hours (9 PM–2 AM) and pickup/delivery schedules.</li>
+                <li>Do not submit content that violates copyright or intellectual property laws.</li>
+            </ul>
+            <h2>5. Liability</h2>
+            <p>Print$Buddy is not liable for:</p>
+            <ul>
+                <li>Errors in print output due to faulty files.</li>
+                <li>Delays caused by unforeseen circumstances (e.g., equipment failure).</li>
+                <li>Loss of data or files after order completion.</li>
+            </ul>
+            <h2>6. Intellectual Property</h2>
+            <p>You retain ownership of your submitted designs but grant Print$Buddy permission to print them. We may showcase custom designs (e.g., posters) in our portfolio unless you opt out.</p>
+            <h2>7. Termination</h2>
+            <p>We may refuse service to users who violate these terms, including submitting inappropriate content or failing to pay.</p>
+            <h2>8. Changes to Terms</h2>
+            <p>We may update these Terms and Conditions periodically. The latest version will be posted on this page with the effective date: August 4, 2025.</p>
+            <h2>9. Contact Us</h2>
+            <p>For questions about these Terms and Conditions, contact us at:</p>
+            <p>Email: <a href="mailto:support@printbuddy.in">support@printbuddy.in</a></p>
+            <p>WhatsApp: <a href="https://wa.me/919251028070">9251028070</a></p>
+            <p>Address: H-8 Hostel, MNIT Jaipur</p>
+        </section>
+    </main>
+    <footer>
+        <p>📍 Pickup: H-8 Hostel Gate (Boys), MNIT Jaipur</p>
+        <p>🚚 Delivery: Girls’ Hostels (₹25/order)</p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.in">support@printbuddy.in</a></p>
+        <p><a href="https://maps.google.com">Find us on Google Maps</a></p>
+        <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms & Conditions</a> | <a href="cancellation-and-refund.html">Cancellation & Refund</a> | <a href="shipping-and-delivery.html">Shipping & Delivery</a></p>
+        <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            window.addEventListener('load', () => {
+                spinner.style.display = 'none';
+            });
+
+            const hamburger = document.querySelector('.hamburger');
+            const navUl = document.querySelector('nav ul');
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('nav-active');
+                hamburger.querySelectorAll('span').forEach((span, i) => {
+                    if (navUl.classList.contains('nav-active')) {
+                        span.style.transform = i === 0 ? 'rotate(45deg) translate(5px, 5px)' : i === 1 ? 'opacity(0)' : 'rotate(-45deg) translate(5px, -5px)';
+                    } else {
+                        span.style.transform = 'none';
+                        span.style.opacity = '1';
+                    }
+                });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (window.innerWidth < 768) {
+                        navUl.classList.remove('nav-active');
+                        hamburger.querySelectorAll('span').forEach(span => {
+                            span.style.transform = 'none';
+                            span.style.opacity = '1';
+                        });
+                    }
+                });
+            });
+
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from('h1', { opacity: 0, y: 20, duration: 0.6 });
+                gsap.from('p, ul', {
+                    scrollTrigger: { trigger: 'section', start: 'top 90%' },
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6,
+                    stagger: 0.2
+                });
+            }
+        });
+    </script>
+</body>
+</html>
