@@ -1,39 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-NMHHD72R');</script>
-<!-- End Google Tag Manager -->
- 
-
-   <meta name="google-site-verification" content="dBsOOyR2YTIWhrB1stUkrl6L3PATAVm-j6p9TqcAsaA" />
-    <meta name="google-site-verification" content="hFaqyp-9LdUXSKPA9RF011TkO2m_-7AUMasXqm_0dGI" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Print$Buddy - Student-run printing service at MNIT Jaipur, offering late-night printing and campus delivery.">
+    <meta name="google-site-verification" content="dBsOOyR2YTIWhrB1stUkrl6L3PATAVm-j6p9TqcAsaA" />
     <title>Print$Buddy - Your Ultimate Printing Partner @ MNIT Jaipur</title>
+    <base href="/PrintsBuddy/">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-
-     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-K42GN5VFQ9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-K42GN5VFQ9');
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Google Tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K42GN5VFQ9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K42GN5VFQ9');
+    </script>
+    <!-- GSAP and ScrollTrigger via CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js?v=2" onload="console.log('GSAP primary CDN loaded successfully')" onerror="console.error('Failed to load GSAP primary CDN', event); loadGSAPFallback()"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2" onload="console.log('ScrollTrigger primary CDN loaded successfully')" onerror="console.error('Failed to load ScrollTrigger primary CDN', event); loadScrollTriggerFallback()"></script>
+    <script>
+        function loadGSAPFallback() {
+            console.warn('Trying secondary CDN for GSAP');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/gsap.min.js?v=2';
+            script.onload = () => console.log('GSAP secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load GSAP secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        function loadScrollTriggerFallback() {
+            console.warn('Trying secondary CDN for ScrollTrigger');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2';
+            script.onload = () => console.log('ScrollTrigger secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load ScrollTrigger secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        console.log('Base URL for debugging:', document.baseURI);
+    </script>
     <style>
-        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
-
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #1F2937;
@@ -325,6 +331,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             opacity: 1;
         }
 
+        .testimonial-controls button {
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonial-dots .dot {
+            width: 10px;
+            height: 10px;
+            background: #6B7280;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .testimonial-dots .dot.active {
+            background: #FBBF24;
+        }
+
         .faq-item {
             background: #374151;
             border-radius: 10px;
@@ -426,6 +449,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
+        .responsive-form-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 96.55%;
+            max-width: 580px;
+            margin: 0 auto;
+        }
+
+        .responsive-form-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -491,33 +532,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 line-height: 1.5;
             }
         }
-
-        .responsive-form-container {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  padding-top: 96.55%; /* Aspect Ratio: (560 / 580) * 100% */
-  
-  /* These two lines make it laptop-friendly */
-  max-width: 580px;
-  margin: 0 auto; 
-}
-
-.responsive-form-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
     </style>
 </head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NMHHD72R"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <body class="no-js">
     <div class="loading-spinner" id="spinner"></div>
     <header>
@@ -719,117 +735,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <p class="font-semibold mt-2">— Aryan Garg, 4th Year</p>
                 </div>
                 <div class="testimonial">
-                    <p class="text-base italic">"Used Print$Buddy throughout my final year. Always on time, and the print quality is consistently good. Never had an issue."</p>
-                    <p class="font-semibold mt-2">— Sonu Meena, 4th Year</p>
-                </div>
-                <div class="testimonial">
                     <p class="text-base italic">"Really convenient for last-minute lab file submissions. The prices are decent, and the service is super quick. Good job, guys."</p>
                     <p class="font-semibold mt-2">— Surendra Meena, 2nd Year</p>
                 </div>
                 <div class="testimonial">
-                    <p class="text-base italic">"The service is great, especially for late-night needs. My only suggestion would be to add a spiral binding option in the future. That would be perfect!"</p>
-                    <p class="font-semibold mt-2">— Gourav Meena, 2nd Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Got my notes printed for mid-sems. The process was so easy, just sent the PDF on WhatsApp and collected it from H-8. Very smooth experience."</p>
-                    <p class="font-semibold mt-2">— Vikram Meena, 2nd Year</p>
-                </div>
-                <div class="testimonial">
                     <p class="text-base italic">"The paid delivery for girls is such a thoughtful and convenient service! I got my posters delivered right to my hostel without having to step out late at night. Thank you!"</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Needed urgent color prints for a presentation, and they delivered. The color accuracy was much better than I expected. Great work."</p>
-                    <p class="font-semibold mt-2">— Vikash Meena, 4th Year</p>
+                    <p class="font-semibold mt-2">— Riya Soni, 4th Year</p>
                 </div>
                 <div class="testimonial">
                     <p class="text-base italic">"The custom poster I ordered came out amazing. The print quality is sharp, and the A4 size is perfect for the hostel room. Will be ordering more."</p>
                     <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
                 </div>
                 <div class="testimonial">
-                    <p class="text-base italic">"Super happy with the anime posters! The collection is great, and the print quality is fantastic. My room looks so much cooler now."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
                     <p class="text-base italic">"A lifesaver, genuinely. Quick, easy, and right here on campus. The student-friendly vibe is a huge plus."</p>
-                    <p class="font-semibold mt-2">— Riya Soni, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Very professional service. The printouts are always neat and properly done. It's my go-to for all academic printing now."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"The convenience is unmatched. Being able to get prints done at midnight without leaving the campus is a game-changer during exam season."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
+                    <p class="font-semibold mt-2">— Sonu Meena, 4th Year</p>
                 </div>
                 <div class="testimonial">
                     <p class="text-base italic">"Fast response on WhatsApp and quick printing. It's exactly the kind of service students need. Keep up the good work."</p>
                     <p class="font-semibold mt-2">— Vangala Mani Kumar, 4th Year</p>
                 </div>
                 <div class="testimonial">
-                    <p class="text-base italic">"I love the new poster service! It's so nice to get good quality, customized prints to decorate our rooms. The delivery option is a huge plus point for us."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"The service is very reliable. There was a small mix-up with my order once, but they fixed it immediately and were very polite about it. Great customer service."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Yearr</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Good quality prints for a fair price. It's way better than going out of campus late at night. Very useful for 2nd-year students with lots of assignments."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Simple and effective. You send a file, you get your print. No hassle. Perfect for students."</p>
-                    <p class="font-semibold mt-2">—Krish Dave, 4th Yearr</p>
-                </div>
-                <div class="testimonial">
                     <p class="text-base italic">"I was surprised by how fast the service was. Sent my file at 11 PM and was able to collect it in no time. Awesome!"</p>
                     <p class="font-semibold mt-2">— Aryan Pingoliya, 2nd Year</p>
                 </div>
                 <div class="testimonial">
-                    <p class="text-base italic">"From notes to posters, Print$Buddy has become an essential service in the hostel. The convenience and reliability are 10/10."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"As a first-year, I was clueless about where to get prints done late at night. Print$Buddy was a total lifesaver for my first-ever submission. The process is super easy!"</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Used them for printing my entire B.Tech project documentation. The quality was consistent across all 100+ pages. Very dependable service for final-year students."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"The convenience is just unmatched. A bit more expensive than shops outside, but for an urgent print at midnight, it's 100% worth it. You're paying for the peace of mind."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
-                </div>
-                <div class="testimonial">
                     <p class="text-base italic">"The Gojo Satoru poster I ordered is sick! Amazing quality. Now my whole wing is asking where I got it from. Great job on the anime collection."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"The delivery for girls is the best feature. It feels safe and is super convenient when you're working late and can't step out. A much-needed service in the hostels."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Quick, no-fuss service. I appreciate how simple it is – just send the PDF and it's done. Perfect for when you're in a hurry."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
-                </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"I got a custom poster printed with my own digital art and the colours came out so vibrant! Really happy with the quality. It's a great way to personalize your room."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
+                    <p class="font-semibold mt-2">— Vikash Meena, 4th Year</p>
                 </div>
                 <div class="testimonial">
                     <p class="text-base italic">"My go-to for printing lab manuals and notes. The pickup from H-8 is easy and the service is always fast. Never disappoints."</p>
                     <p class="font-semibold mt-2">— Shivam, 4th Year</p>
                 </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"A very well-managed and professional service, even though it's student-run. The response time on WhatsApp is quick, and they're very clear about the costs."</p>
-                    <p class="font-semibold mt-2">— Aniket Mirgale, 4th Year</p>
+                <div class="testimonial-controls flex justify-center mt-4 gap-2">
+                    <button class="prev-btn bg-cyan-500 text-white px-4 py-2 rounded hover:bg-cyan-600">Previous</button>
+                    <button class="next-btn bg-cyan-500 text-white px-4 py-2 rounded hover:bg-cyan-600">Next</button>
                 </div>
-                <div class="testimonial">
-                    <p class="text-base italic">"Found out about them through a friend and it's already saved me twice. Knowing there's a reliable late-night printing option in the hostel is a huge relief."</p>
-                    <p class="font-semibold mt-2">— Krish Dave, 4th Year</p>
-                </div>
+                <div class="testimonial-dots flex justify-center mt-2 gap-2"></div>
             </div>
         </section>
 
@@ -884,44 +825,32 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <p class="text-lg font-semibold">9251028070</p>
                 <a href="https://wa.me/919251028070?text=Hi,%20I%27d%20like%20to%20place%20an%20order%20for%20printing." class="whatsapp-btn">Chat on WhatsApp</a>
             </div>
-            <div class="max-w-2xl mx-auto">
-               
-            </div>
+           
         </section>
 
         <section id="feedback" class="feedback-form">
             <h2>Feedback</h2>
             <p class="text-center mb-4 text-base">We value your feedback! Please fill out the form below to share your experience with Print$Buddy.</p>
-            <div class="max-w-2xl mx-auto">
-              
-  <<div class="responsive-form-container">
-  <iframe 
-    src="https://docs.google.com/forms/d/e/1FAIpQLSf7SUAQuxcVZs1YUlVXalyTUk5Ssd2B1nkVZrmSA-EnbK6JqA/viewform?embedded=true" 
-    frameborder="0" 
-    marginheight="0" 
-    marginwidth="0">
-    Loading…
-  </iframe>
-</div>
-</div>
-
-     </div>
-     </section>
+            <div class="responsive-form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf7SUAQuxcVZs1YUlVXalyTUk5Ssd2B1nkVZrmSA-EnbK6JqA/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>📍 Pickup: H-8 Hostel Gate (Boys), MNIT Jaipur</p>
         <p>🚚 Delivery: Girls’ Hostels (₹25/order)</p>
-        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.in">support@printbuddy.in</a></p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.space">support@printbuddy.space</a></p>
         <p><a href="https://maps.google.com">Find us on Google Maps</a></p>
         <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
-    
     </footer>
+
     <a href="https://wa.me/919251028070?text=Hi,%20I%27d%20like%20to%20place%20an%20order%20for%20printing." class="whatsapp-float">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox ="0 0 0 0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.76.36 3.45 1.03 5.01L2 22l5.22-1.36c1.48.57 3.12.91 4.82.91 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm3.67 15.69c-.31.88-.89 1.59-1.74 1.92-.84.33-1.95.26-3.12-.22-1.34-.55-2.47-1.47-3.47-2.59-1.01-1.12-1.97-2.4-2.34-3.87-.37-1.47.08-2.27.88-3.06.17-.17.34-.25.57-.25.14 0 .28.01.41.04.57.14.96.69 1.08 1.25.15.69.37 1.37.55 2.05.08.31.03.65-.14.94-.17.29-.37.52-.61.69-.24.17-.49.29-.45.69.04.4.42.92.87 1.37.45.45.98.83 1.38.87.39.04.52-.2.69-.44.17-.24.41-.49.69-.66.29-.17.63-.22.94-.14.68.18 1.36.4 2.05.55.56.12 1.11.24 1.25 1.08.14.57.05 1.18-.22 1.73z"/>
         </svg>
-    </a>  
+    </a>
+
     <script>
         document.body.classList.remove('no-js');
         const spinner = document.getElementById('spinner');
@@ -930,6 +859,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             spinner.style.display = 'none';
         });
 
+        // Hamburger menu
         const hamburger = document.querySelector('.hamburger');
         const navUl = document.querySelector('nav ul');
         hamburger.addEventListener('click', () => {
@@ -944,6 +874,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -960,122 +891,181 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             });
         });
 
-        gsap.from('#hero h1', { opacity: 0, y: 20, duration: 0.6 });
-        gsap.from('#hero p', { opacity: 0, y: 20, duration: 0.6, delay: 0.1 });
-        gsap.from('.whatsapp-btn', { opacity: 0, y: 20, duration: 0.6, delay: 0.2 });
+        // GSAP animations with reduced delay
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                console.log('Checking GSAP:', typeof gsap !== 'undefined');
+                console.log('Checking ScrollTrigger:', typeof ScrollTrigger !== 'undefined');
 
-        gsap.utils.toArray('.impact-card').forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 90%' },
-                opacity: 0,
-                y: 20,
-                duration: 0.6
-            });
-        });
+                if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                    console.log('Initializing GSAP animations');
+                    gsap.registerPlugin(ScrollTrigger);
 
-        gsap.utils.toArray('.service-card').forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 90%' },
-                opacity: 0,
-                y: 20,
-                duration: 0.6
-            });
-        });
+                    gsap.from('#hero h1', { opacity: 0, y: 20, duration: 0.6 });
+                    gsap.from('#hero p', { opacity: 0, y: 20, duration: 0.6, delay: 0.1 });
+                    gsap.from('.whatsapp-btn', { opacity: 0, y: 20, duration: 0.6, delay: 0.2 });
 
-        gsap.from('.pricing-table', {
-            scrollTrigger: { trigger: '.pricing-table', start: 'top 90%' },
-            opacity: 0,
-            y: 20,
-            duration: 0.6
-        });
+                    gsap.utils.toArray('.impact-card').forEach(card => {
+                        gsap.from(card, {
+                            scrollTrigger: { trigger: card, start: 'top 90%' },
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.6
+                        });
+                    });
 
-        gsap.from('.discount-card', {
-            scrollTrigger: { trigger: '.discount-card', start: 'top 90%' },
-            opacity: 0,
-            y: 20,
-            duration: 0.6
-        });
+                    gsap.utils.toArray('.service-card').forEach(card => {
+                        gsap.from(card, {
+                            scrollTrigger: { trigger: card, start: 'top 90%' },
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.6
+                        });
+                    });
 
-        gsap.utils.toArray('.team-card').forEach(card => {
-            gsap.from(card, {
-                scrollTrigger: { trigger: card, start: 'top 90%' },
-                opacity: 0,
-                y: 20,
-                duration: 0.6
-            });
-        });
+                    gsap.from('.pricing-table', {
+                        scrollTrigger: { trigger: '.pricing-table', start: 'top 90%' },
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6
+                    });
 
-        gsap.from('.order-section', {
-            scrollTrigger: { trigger: '.order-section', start: 'top 90%' },
-            opacity: 0,
-            y: 20,
-            duration: 0.6
-        });
+                    gsap.from('.discount-card', {
+                        scrollTrigger: { trigger: '.discount-card', start: 'top 90%' },
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6
+                    });
 
-        gsap.from('.feedback-form', {
-            scrollTrigger: { trigger: '.feedback-form', start: 'top 90%' },
-            opacity: 0,
-            y: 20,
-            duration: 0.6
-        });
+                    gsap.utils.toArray('.team-card').forEach(card => {
+                        gsap.from(card, {
+                            scrollTrigger: { trigger: card, start: 'top 90%' },
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.6
+                        });
+                    });
 
-        gsap.from('.whatsapp-float', {
-            opacity: 0,
-            y: 50,
-            duration: 0.6,
-            delay: 0.5
-        });
+                    gsap.from('.order-section', {
+                        scrollTrigger: { trigger: '.order-section', start: 'top 90%' },
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6
+                    });
 
-        gsap.utils.toArray('.counter').forEach(counter => {
-            gsap.to(counter, {
-                scrollTrigger: { trigger: counter, start: 'top 90%' },
-                textContent: counter.getAttribute('data-target'),
-                duration: 1,
-                ease: 'power1.out',
-                snap: { textContent: 1 },
-                onUpdate: function() {
-                    counter.textContent = Math.ceil(counter.textContent).toLocaleString();
-                }
-            });
-        });
+                    gsap.from('.feedback-form', {
+                        scrollTrigger: { trigger: '.feedback-form', start: 'top 90%' },
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.6
+                    });
 
-        const testimonials = document.querySelectorAll('.testimonial');
-        let currentTestimonial = 0;
+                    gsap.from('.whatsapp-float', {
+                        opacity: 0,
+                        y: 50,
+                        duration: 0.6,
+                        delay: 0.5
+                    });
 
-        function showTestimonial(index) {
-            testimonials.forEach((t, i) => {
-                if (i === index) {
-                    t.classList.add('active');
-                    gsap.fromTo(t, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 });
+                    gsap.utils.toArray('.counter').forEach(counter => {
+                        gsap.to(counter, {
+                            scrollTrigger: { trigger: counter, start: 'top 90%' },
+                            textContent: counter.getAttribute('data-target'),
+                            duration: 1,
+                            ease: 'power1.out',
+                            snap: { textContent: 1 },
+                            onUpdate: function() {
+                                counter.textContent = Math.ceil(counter.textContent).toLocaleString();
+                            }
+                        });
+                    });
                 } else {
-                    t.classList.remove('active');
-                    gsap.to(t, { opacity: 0, y: 20, duration: 0.3 });
+                    console.error('GSAP or ScrollTrigger not loaded after retries, animations disabled');
                 }
-            });
-        }
 
-        let testimonialInterval = setInterval(() => {
-            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-            showTestimonial(currentTestimonial);
-        }, 4000);
+                // Testimonial slider
+                const testimonials = document.querySelectorAll('.testimonial');
+                const dotsContainer = document.querySelector('.testimonial-dots');
+                let currentTestimonial = 0;
+                let testimonialInterval;
 
-        document.querySelector('.testimonial-slider').addEventListener('mouseenter', () => {
-            clearInterval(testimonialInterval);
-        });
+                function showTestimonial(index) {
+                    testimonials.forEach((t, i) => {
+                        if (i === index) {
+                            t.classList.add('active');
+                            if (typeof gsap !== 'undefined') {
+                                gsap.fromTo(t, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 });
+                            } else {
+                                t.style.opacity = 1;
+                                t.style.transform = 'translateY(0)';
+                            }
+                            dotsContainer.children[i].classList.add('active');
+                        } else {
+                            t.classList.remove('active');
+                            if (typeof gsap !== 'undefined') {
+                                gsap.to(t, { opacity: 0, y: 20, duration: 0.3 });
+                            } else {
+                                t.style.opacity = 0;
+                                t.style.transform = 'translateY(20px)';
+                            }
+                            dotsContainer.children[i].classList.remove('active');
+                        }
+                    });
+                }
 
-        document.querySelector('.testimonial-slider').addEventListener('mouseleave', () => {
-            testimonialInterval = setInterval(() => {
-                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-                showTestimonial(currentTestimonial);
-            }, 4000);
-        });
+                testimonials.forEach((_, i) => {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === 0) dot.classList.add('active');
+                    dot.addEventListener('click', () => {
+                        clearInterval(testimonialInterval);
+                        currentTestimonial = i;
+                        showTestimonial(currentTestimonial);
+                        startTestimonialInterval();
+                    });
+                    dotsContainer.appendChild(dot);
+                });
 
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                answer.classList.toggle('active');
-                question.querySelector('span').textContent = answer.classList.contains('active') ? '▲' : '▼';
-            });
+                function startTestimonialInterval() {
+                    testimonialInterval = setInterval(() => {
+                        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                        showTestimonial(currentTestimonial);
+                    }, 4000);
+                }
+
+                document.querySelector('.prev-btn').addEventListener('click', () => {
+                    clearInterval(testimonialInterval);
+                    currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                    showTestimonial(currentTestimonial);
+                    startTestimonialInterval();
+                });
+
+                document.querySelector('.next-btn').addEventListener('click', () => {
+                    clearInterval(testimonialInterval);
+                    currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                    showTestimonial(currentTestimonial);
+                    startTestimonialInterval();
+                });
+
+                document.querySelector('.testimonial-slider').addEventListener('mouseenter', () => {
+                    clearInterval(testimonialInterval);
+                });
+
+                document.querySelector('.testimonial-slider').addEventListener('mouseleave', () => {
+                    startTestimonialInterval();
+                });
+
+                startTestimonialInterval();
+
+                // FAQ toggle
+                document.querySelectorAll('.faq-question').forEach(question => {
+                    question.addEventListener('click', () => {
+                        const answer = question.nextElementSibling;
+                        answer.classList.toggle('active');
+                        question.querySelector('span').textContent = answer.classList.contains('active') ? '▲' : '▼';
+                    });
+                });
+            }, 800);
         });
     </script>
 </body>
