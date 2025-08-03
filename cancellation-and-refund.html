@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="Print$Buddy Cancellation and Refund Policy - Learn about our policies for cancelling orders and requesting refunds at MNIT Jaipur.">
+    <meta name="google-site-verification" content="dBsOOyR2YTIWhrB1stUkrl6L3PATAVm-j6L3PATAVm-j6p9TqcAsaA" />
+    <title>Cancellation and Refund Policy - Print$Buddy</title>
+    <base href="/PrintsBuddy/">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-K42GN5VFQ9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-K42GN5VFQ9');
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js?v=2" onload="console.log('GSAP primary CDN loaded successfully')" onerror="console.error('Failed to load GSAP primary CDN', event); loadGSAPFallback()"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2" onload="console.log('ScrollTrigger primary CDN loaded successfully')" onerror="console.error('Failed to load ScrollTrigger primary CDN', event); loadScrollTriggerFallback()"></script>
+    <script>
+        function loadGSAPFallback() {
+            console.warn('Trying secondary CDN for GSAP');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/gsap.min.js?v=2';
+            script.onload = () => console.log('GSAP secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load GSAP secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        function loadScrollTriggerFallback() {
+            console.warn('Trying secondary CDN for ScrollTrigger');
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js?v=2';
+            script.onload = () => console.log('ScrollTrigger secondary CDN loaded successfully');
+            script.onerror = (e) => console.error('Failed to load ScrollTrigger secondary CDN: ' + (e.message || 'Unknown error'));
+            document.head.appendChild(script);
+        }
+        console.log('Base URL for debugging:', document.baseURI);
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1F2937;
+            color: #F3F4F6 !important;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(90deg, #06B6D4, #1E3A8A);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+            flex-direction: row;
+        }
+        nav a {
+            color: #F3F4F6 !important;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #FBBF24 !important;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #F3F4F6;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+        .nav-active {
+            display: flex !important;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #1E3A8A;
+            padding: 1rem;
+            z-index: 999;
+        }
+        section {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+        h1, h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        p, li {
+            color: #F3F4F6 !important;
+            line-height: 1.6;
+        }
+        footer {
+            background: linear-gradient(90deg, #1E3A8A, #06B6D4);
+            color: #F3F4F6 !important;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #FBBF24 !important;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #EC4899 !important;
+        }
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 4px solid #FBBF24;
+            border-top: 4px solid #06B6D4;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            z-index: 2000;
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .nav-active {
+                display: flex !important;
+            }
+            h1, h2 {
+                font-size: 1.8rem;
+            }
+            p, li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-spinner" id="spinner"></div>
+    <header>
+        <nav>
+            <div class="logo">Print$Buddy 🖨️</div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#testimonials">Testimonials</a></li>
+                <li><a href="index.html#faq">FAQ</a></li>
+                <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#order">Order</a></li>
+                <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                <li><a href="cancellation-and-refund.html">Cancellation & Refund</a></li>
+                <li><a href="shipping-and-delivery.html">Shipping & Delivery</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Cancellation and Refund Policy</h1>
+            <p>At Print$Buddy, we aim to provide a seamless printing experience. This Cancellation and Refund Policy outlines the process for cancelling orders and requesting refunds.</p>
+            <h2>1. Order Cancellation</h2>
+            <ul>
+                <li><strong>Before Printing</strong>: You may cancel your order before printing begins by contacting us via WhatsApp (9251028070) or email (<a href="mailto:support@printbuddy.in">support@printbuddy.in</a>). No charges will apply.</li>
+                <li><strong>After Printing</strong>: Orders cannot be cancelled once printing has started, as resources (ink, paper) are already committed.</li>
+            </ul>
+            <h2>2. Refund Eligibility</h2>
+            <ul>
+                <li><strong>Printing Errors</strong>: If we make an error (e.g., wrong file printed, poor quality), we will reprint at no cost or issue a full refund.</li>
+                <li><strong>Customer Errors</strong>: No refunds for errors in your submitted files (e.g., typos, incorrect formatting).</li>
+                <li><strong>Delivery Issues</strong>: If delivery fails due to our error (e.g., wrong hostel), we will redeliver at no cost or refund the delivery fee (₹25).</li>
+            </ul>
+            <h2>3. Refund Process</h2>
+            <p>Contact us within 24 hours of order completion to report issues. Provide order details and proof of error (e.g., photo of incorrect print). Refunds will be processed via UPI or cash within 3–5 business days.</p>
+            <h2>4. Non-Refundable Cases</h2>
+            <ul>
+                <li>Orders collected or delivered as per your instructions.</li>
+                <li>Late cancellation requests after printing has begun.</li>
+                <li>Failure to collect prints within 48 hours (H-8 Hostel gate).</li>
+            </ul>
+            <h2>5. Contact Us</h2>
+            <p>For cancellation or refund requests, contact us at:</p>
+            <p>Email: <a href="mailto:support@printbuddy.space">support@printbuddy.space</a></p>
+            <p>WhatsApp: <a href="https://wa.me/919251028070">9251028070</a></p>
+            <p>Address: H-8 Hostel, MNIT Jaipur</p>
+            <h2>6. Policy Updates</h2>
+            <p>This policy may be updated periodically. The latest version is effective as of August 4, 2025.</p>
+        </section>
+    </main>
+    <footer>
+        <p>📍 Pickup: H-8 Hostel Gate (Boys), MNIT Jaipur</p>
+        <p>🚚 Delivery: Girls’ Hostels (₹25/order)</p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.space">support@printbuddy.space</a></p>
+        <p><a href="https://maps.google.com">Find us on Google Maps</a></p>
+        <p><a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-and-conditions.html">Terms & Conditions</a> | <a href="cancellation-and-refund.html">Cancellation & Refund</a> | <a href="shipping-and-delivery.html">Shipping & Delivery</a></p>
+        <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('spinner');
+            spinner.style.display = 'block';
+            window.addEventListener('load', () => {
+                spinner.style.display = 'none';
+            });
+
+            const hamburger = document.querySelector('.hamburger');
+            const navUl = document.querySelector('nav ul');
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('nav-active');
+                hamburger.querySelectorAll('span').forEach((span, i) => {
+                    if (navUl.classList.contains('nav-active')) {
+                        span.style.transform = i === 0 ? 'rotate(45deg) translate(5px, 5px)' : i === 1 ? 'opacity(0)' : 'rotate(-45deg) translate(5px, -5px)';
+                    } else {
+                        span.style.transform = 'none';
+                        span.style.opacity = '1';
+                    }
+                });
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    if (window.innerWidth < 768) {
+                        navUl.classList.remove('nav-active');
+                        hamburger.querySelectorAll('span').forEach(span => {
+                            span.style.transform = 'none';
+                            span.style.opacity = '1';
+                        });
+                    }
+                });
+            });
+
+            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.from('h1', { opacity: 0, y: 20, duration: 0.6 });
+                gsap.from('p, ul', {
+                    scrollTrigger: { trigger: 'section', start: 'top 90%' },
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.6,
+                    stagger: 0.2
+                });
+            }
+        });
+    </script>
+</body>
+</html>
