@@ -113,14 +113,27 @@
 
     <script>
         const galleryData = {
-            posters: [
-                { id: 'anime-01', title: 'Gojo Satoru - Limitless', price: '₹40', image: 'assets/images/posters/gojo-satoru.jpg', description: 'High-quality A4 poster of Gojo Satoru from Jujutsu Kaisen.' },
-                { id: 'anime-02', title: 'Zoro - Three Sword Style', price: '₹40', image: 'assets/images/posters/zoro.jpg', description: 'Dynamic Zoro poster from One Piece.' },
-                { id: 'movie-01', title: 'Interstellar - Endurance', price: '₹45', image: 'assets/images/posters/interstellar.jpg', description: 'A stunning poster from Christopher Nolan\'s masterpiece.' },
-            ],
-            collages: [
-                { id: 'collage-01', title: 'Vintage Aesthetic Collage Kit', price: '₹XXXX', previewImage: 'assets/images/collages/vintage-preview.jpg', description: 'images Comming soon  Comming soon Comming soon Comming soon Comming soon .', images: Array.from({length: 10}, (_, i) => `assets/images/collages/vintage/${String(i+1).padStart(2, '0')}.jpg`) },
-            ]
+    posters: [
+        // --- Existing Posters ---
+        { id: 'anime-01', title: 'Gojo Satoru - Limitless', price: '₹40', image: 'assets/images/posters/gojo-satoru.jpg', description: 'High-quality A4 poster of Gojo Satoru from Jujutsu Kaisen.' },
+        { id: 'anime-02', title: 'Zoro - Three Sword Style', price: '₹40', image: 'assets/images/posters/zoro.jpg', description: 'Dynamic Zoro poster from One Piece.' },
+        { id: 'movie-01', title: 'Interstellar - Endurance', price: '₹45', image: 'assets/images/posters/interstellar.jpg', description: 'A stunning poster from Christopher Nolan\'s masterpiece.' },
+
+        // --- New Anime Posters ---
+        { id: 'anime-03', title: 'Levi Ackerman - Humanity\'s Strongest', price: '₹40', image: 'assets/images/posters/levi-ackerman.jpg', description: 'A sleek and powerful poster of Captain Levi from Attack on Titan.' },
+        { id: 'anime-04', title: 'Naruto - Sage Mode', price: '₹40', image: 'assets/images/posters/naruto-sage.jpg', description: 'Feel the power of Mount Myoboku with this Naruto Sage Mode poster.' },
+        { id: 'anime-05', title: 'Chainsaw Man - Public Safety Devil Hunter', price: '₹45', image: 'assets/images/posters/chainsaw-man.jpg', description: 'A visceral and stylish poster of Denji as Chainsaw Man.' },
+        { id: 'anime-06', title: 'Death Note - Justice', price: '₹40', image: 'assets/images/posters/death-note.jpg', description: 'A dark, thought-provoking poster featuring Light and Ryuk.' },
+        { id: 'anime-07', title: 'Anya Forger - Spy x Family', price: '₹40', image: 'assets/images/posters/anya-forger.jpg', description: 'A charming and adorable poster of Anya from the hit series Spy x Family. Heh.' },
+        { id: 'anime-08', title: 'Itachi Uchiha - Mangekyo Sharingan', price: '₹40', image: 'assets/images/posters/itachi-uchiha.jpg', description: 'A powerful poster of the legendary Itachi Uchiha and his iconic Sharingan.' }
+    ],
+    collages: [
+        // Your collage data remains here
+        { id: 'collage-01', title: 'Vintage Aesthetic Collage Kit', price: '₹250', previewImage: 'assets/images/collages/vintage-preview.jpg', description: 'A curated set of 50 images for creating a vintage-themed aesthetic collage wall.', images: Array.from({length: 50}, (_, i) => `assets/images/collages/vintage/${String(i+1).padStart(2, '0')}.jpg`) },
+        { id: 'collage-02', title: 'Anime Manga Panel Collage Kit', price: '₹250', previewImage: 'assets/images/collages/manga-preview.jpg', description: 'A set of 50 iconic manga panels for a dynamic anime-themed wall collage.', images: Array.from({length: 50}, (_, i) => `assets/images/collages/manga/${String(i+1).padStart(2, '0')}.jpg`) },
+        { id: 'collage-03', title: 'Bohemian Dream Collage Kit', price: '₹250', previewImage: 'assets/images/collages/boho-preview.jpg', description: 'Create a dreamy, bohemian vibe with this hand-picked set of 50 collage prints.', images: Array.from({length: 50}, (_, i) => `assets/images/collages/boho/${String(i+1).padStart(2, '0')}.jpg`) }
+    ]
+};
         };
 
         document.addEventListener('DOMContentLoaded', () => {
