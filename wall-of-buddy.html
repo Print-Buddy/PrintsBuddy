@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Print$Buddy's Wall of Buddy - Explore our collection of anime posters, wall collages, and custom prints available for order at MNIT Jaipur.">
     <title>Wall of Buddy - Print$Buddy @ MNIT Jaipur</title>
-    <!-- The <base> tag has been removed for more reliable local file paths -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
@@ -43,7 +42,8 @@
         .close-btn:hover, .close-btn:focus { color: #FBBF24; text-decoration: none; }
         #modal-image-container img { max-width: 100%; max-height: 55vh; border-radius: 8px; margin: 0 auto 1rem; }
         #modal-collage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; max-height: 55vh; overflow-y: auto; margin-bottom: 1rem; padding: 10px; background: #1f2937; border-radius: 8px; }
-        #modal-collage-grid img { width: 100%; border-radius: 5px; }
+        #modal-collage-grid img { width: 100%; border-radius: 5px; cursor: pointer; transition: transform 0.2s ease; }
+        #modal-collage-grid img:hover { transform: scale(1.05); }
         #modal-title { color: #06B6D4 !important; }
         #modal-price { color: #FBBF24 !important; }
         #modal-description { margin-top: 1rem; margin-bottom: 1.5rem; font-size: 1.1rem; color: #cbd5e0; text-align: left; }
@@ -69,8 +69,8 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#pricing">Pricing</a></li> 
-                 <li><a href="index.html#team">Team</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#team">Team</a></li>
             </ul>
         </nav>
     </header>
@@ -112,116 +112,148 @@
     </footer>
 
     <script>
-        const galleryData = {
-    posters: [
-        // --- Existing Posters ---
-        { id: 'anime-01', title: 'Gojo Satoru - Limitless', price: '₹40', image: 'assets/images/posters/gojo-satoru.jpg', description: 'High-quality A4 poster of Gojo Satoru from Jujutsu Kaisen.' },
-        { id: 'anime-02', title: 'Zoro - Three Sword Style', price: '₹40', image: 'assets/images/posters/zoro.jpg', description: 'Dynamic Zoro poster from One Piece.' },
-        { id: 'movie-01', title: 'Interstellar - Endurance', price: '₹45', image: 'assets/images/posters/interstellar.jpg', description: 'A stunning poster from Christopher Nolan\'s masterpiece.' },
+    const galleryData = {
+        posters: [
+            // --- Existing Posters ---
+            { id: 'anime-01', title: 'Gojo Satoru - Limitless', price: '₹40', image: 'assets/images/posters/gojo-satoru.jpg', description: 'High-quality A4 poster of Gojo Satoru from Jujutsu Kaisen.' },
+            { id: 'anime-02', title: 'Zoro - Three Sword Style', price: '₹40', image: 'assets/images/posters/zoro.jpg', description: 'Dynamic Zoro poster from One Piece.' },
+            { id: 'movie-01', title: 'Interstellar - Endurance', price: '₹45', image: 'assets/images/posters/interstellar.jpg', description: 'A stunning poster from Christopher Nolan\'s masterpiece.' },
 
-        // --- New Anime Posters ---
-        { id: 'anime-03', title: 'Levi Ackerman - Humanity\'s Strongest', price: '₹40', image: 'assets/images/posters/levi-ackerman.jpg', description: 'A sleek and powerful poster of Captain Levi from Attack on Titan.' },
-        { id: 'anime-04', title: 'Naruto - Sage Mode', price: '₹40', image: 'assets/images/posters/naruto-sage.jpg', description: 'Feel the power of Mount Myoboku with this Naruto Sage Mode poster.' },
-        { id: 'anime-05', title: 'Chainsaw Man - Public Safety Devil Hunter', price: '₹45', image: 'assets/images/posters/chainsaw-man.jpg', description: 'A visceral and stylish poster of Denji as Chainsaw Man.' },
-        { id: 'anime-06', title: 'Death Note - Justice', price: '₹40', image: 'assets/images/posters/death-note.jpg', description: 'A dark, thought-provoking poster featuring Light and Ryuk.' },
-        { id: 'anime-07', title: 'Anya Forger - Spy x Family', price: '₹40', image: 'assets/images/posters/anya-forger.jpg', description: 'A charming and adorable poster of Anya from the hit series Spy x Family. Heh.' },
-        { id: 'anime-08', title: 'Itachi Uchiha - Mangekyo Sharingan', price: '₹40', image: 'assets/images/posters/itachi-uchiha.jpg', description: 'A powerful poster of the legendary Itachi Uchiha and his iconic Sharingan.' }
-    ],
-    collages: [
-        // Your collage data remains here
-        { id: 'collage-01', title: 'Vintage Aesthetic Collage Kit', price: '₹250', previewImage: 'assets/images/collages/vintage-preview.jpg', description: 'A curated set of 10 images for creating a vintage-themed aesthetic collage wall.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/vintage/${String(i+1).padStart(2, '0')}.jpg`) },
-        { id: 'collage-02', title: 'Anime Manga Panel Collage Kit', price: '₹250', previewImage: 'assets/images/collages/manga-preview.jpg', description: 'A set of 50 iconic manga panels for a dynamic anime-themed wall collage.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/manga/${String(i+1).padStart(2, '0')}.jpg`) },
-        { id: 'collage-03', title: 'Bohemian Dream Collage Kit', price: '₹250', previewImage: 'assets/images/collages/boho-preview.jpg', description: 'Create a dreamy, bohemian vibe with this hand-picked set of 50 collage prints.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/boho/${String(i+1).padStart(2, '0')}.jpg`) }
-    ]
-};
+            // --- New Anime Posters ---
+            { id: 'anime-03', title: 'Levi Ackerman - Humanity\'s Strongest', price: '₹40', image: 'assets/images/posters/levi-ackerman.jpg', description: 'A sleek and powerful poster of Captain Levi from Attack on Titan.' },
+            { id: 'anime-04', title: 'Naruto - Sage Mode', price: '₹40', image: 'assets/images/posters/naruto-sage.jpg', description: 'Feel the power of Mount Myoboku with this Naruto Sage Mode poster.' },
+            { id: 'anime-05', title: 'Chainsaw Man - Public Safety Devil Hunter', price: '₹45', image: 'assets/images/posters/chainsaw-man.jpg', description: 'A visceral and stylish poster of Denji as Chainsaw Man.' },
+            { id: 'anime-06', title: 'Death Note - Justice', price: '₹40', image: 'assets/images/posters/death-note.jpg', description: 'A dark, thought-provoking poster featuring Light and Ryuk.' },
+            { id: 'anime-07', title: 'Anya Forger - Spy x Family', price: '₹40', image: 'assets/images/posters/anya-forger.jpg', description: 'A charming and adorable poster of Anya from the hit series Spy x Family. Heh.' },
+            { id: 'anime-08', title: 'Itachi Uchiha - Mangekyo Sharingan', price: '₹40', image: 'assets/images/posters/itachi-uchiha.jpg', description: 'A powerful poster of the legendary Itachi Uchiha and his iconic Sharingan.' }
+        ],
+        collages: [
+            // Your collage data remains here
+            { id: 'collage-01', title: 'Vintage Aesthetic Collage Kit', price: '₹250', previewImage: 'assets/images/collages/vintage-preview.jpg', description: 'A curated set of 10 images for creating a vintage-themed aesthetic collage wall.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/vintage/${String(i+1).padStart(2, '0')}.jpg`) },
+            { id: 'collage-02', title: 'Anime Manga Panel Collage Kit', price: '₹250', previewImage: 'assets/images/collages/manga-preview.jpg', description: 'A set of 10 iconic manga panels for a dynamic anime-themed wall collage.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/manga/${String(i+1).padStart(2, '0')}.jpg`) },
+            { id: 'collage-03', title: 'Bohemian Dream Collage Kit', price: '₹250', previewImage: 'assets/images/collages/boho-preview.jpg', description: 'Create a dreamy, bohemian vibe with this hand-picked set of 10 collage prints.', images: Array.from({length: 10}, (_, i) => `assets/images/collages/boho/${String(i+1).padStart(2, '0')}.jpg`) }
+        ]
+    };
 
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const postersGrid = document.getElementById('posters-art-grid');
-            const collageGrid = document.getElementById('wall-collages-grid');
-            const placeholder = "this.src='https://placehold.co/400x600/374151/F3F4F6?text=Image+Not+Found'";
+    document.addEventListener('DOMContentLoaded', () => {
+        const postersGrid = document.getElementById('posters-art-grid');
+        const collageGrid = document.getElementById('wall-collages-grid');
+        const placeholder = "this.src='https://placehold.co/400x600/374151/F3F4F6?text=Image+Not+Found'";
 
-            galleryData.posters.forEach(item => {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-item';
-                galleryItem.dataset.id = item.id;
-                galleryItem.dataset.type = 'posters';
-                galleryItem.innerHTML = `<img src="${item.image}" alt="${item.title}" loading="lazy" onerror="${placeholder}"><div class="overlay">${item.title}</div>`;
-                postersGrid.appendChild(galleryItem);
-            });
-
-            galleryData.collages.forEach(item => {
-                const galleryItem = document.createElement('div');
-                galleryItem.className = 'gallery-item';
-                galleryItem.dataset.id = item.id;
-                galleryItem.dataset.type = 'collages';
-                galleryItem.innerHTML = `<img src="${item.previewImage}" alt="${item.title}" loading="lazy" onerror="${placeholder}"><div class="overlay">${item.title}</div>`;
-                collageGrid.appendChild(galleryItem);
-            });
-
-            const modal = document.getElementById('imageModal');
-            const closeBtn = document.querySelector('.close-btn');
-            const modalTitle = document.getElementById('modal-title');
-            const modalPrice = document.getElementById('modal-price');
-            const modalImageContainer = document.getElementById('modal-image-container');
-            const modalCollageGrid = document.getElementById('modal-collage-grid');
-            const modalDescription = document.getElementById('modal-description');
-            const downloadBtn = document.getElementById('download-btn');
-            const modalWhatsAppBtn = document.getElementById('modal-whatsapp-btn');
-
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    const type = item.dataset.type;
-                    const id = item.dataset.id;
-                    const data = galleryData[type].find(d => d.id === id);
-                    if (!data) return;
-
-                    modalImageContainer.innerHTML = '';
-                    modalCollageGrid.innerHTML = '';
-                    modalTitle.textContent = data.title;
-                    modalPrice.textContent = `Price: ${data.price}`;
-                    modalDescription.innerHTML = `<strong>About:</strong><br>${data.description}`;
-
-                    let imageUrlForDownload = '';
-                    if (type === 'posters') {
-                        modalImageContainer.style.display = 'block';
-                        modalCollageGrid.style.display = 'none';
-                        const img = document.createElement('img');
-                        img.src = data.image;
-                        img.alt = data.title;
-                        modalImageContainer.appendChild(img);
-                        imageUrlForDownload = data.image;
-                    } else if (type === 'collages') {
-                        modalImageContainer.style.display = 'none';
-                        modalCollageGrid.style.display = 'grid';
-                        data.images.forEach(imgSrc => {
-                            const img = document.createElement('img');
-                            img.src = imgSrc;
-                            img.alt = 'Collage piece';
-                            img.loading = 'lazy';
-                            modalCollageGrid.appendChild(img);
-                        });
-                        imageUrlForDownload = data.previewImage;
-                    }
-                    
-                    downloadBtn.href = imageUrlForDownload;
-                    downloadBtn.download = `${data.title.replace(/ /g, '-')}.jpg`;
-
-                    const whatsappText = encodeURIComponent(`Hi, I'd like to order the "${data.title}" (Price: ${data.price}).`);
-                    modalWhatsAppBtn.href = `https://wa.me/919251028070?text=${whatsappText}`;
-
-                    modal.style.display = 'flex';
-                });
-            });
-
-            const closeModal = () => { modal.style.display = 'none'; }
-            closeBtn.addEventListener('click', closeModal);
-            modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
-
-            const hamburger = document.querySelector('.hamburger');
-            const navUl = document.querySelector('nav ul');
-            hamburger.addEventListener('click', () => { navUl.classList.toggle('nav-active'); });
+        galleryData.posters.forEach(item => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.dataset.id = item.id;
+            galleryItem.dataset.type = 'posters';
+            galleryItem.innerHTML = `<img src="${item.image}" alt="${item.title}" loading="lazy" onerror="${placeholder}"><div class="overlay">${item.title}</div>`;
+            postersGrid.appendChild(galleryItem);
         });
+
+        galleryData.collages.forEach(item => {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.dataset.id = item.id;
+            galleryItem.dataset.type = 'collages';
+            galleryItem.innerHTML = `<img src="${item.previewImage}" alt="${item.title}" loading="lazy" onerror="${placeholder}"><div class="overlay">${item.title}</div>`;
+            collageGrid.appendChild(galleryItem);
+        });
+
+        const modal = document.getElementById('imageModal');
+        const closeBtn = document.querySelector('.close-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalImageContainer = document.getElementById('modal-image-container');
+        const modalCollageGrid = document.getElementById('modal-collage-grid');
+        const modalDescription = document.getElementById('modal-description');
+        const downloadBtn = document.getElementById('download-btn');
+        const modalWhatsAppBtn = document.getElementById('modal-whatsapp-btn');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const type = item.dataset.type;
+                const id = item.dataset.id;
+                const data = galleryData[type].find(d => d.id === id);
+                if (!data) return;
+
+                modalImageContainer.innerHTML = '';
+                modalCollageGrid.innerHTML = '';
+                modalTitle.textContent = data.title;
+                modalPrice.textContent = `Price: ${data.price}`;
+                modalDescription.innerHTML = `<strong>About:</strong><br>${data.description}`;
+
+                if (type === 'posters') {
+                    modalImageContainer.style.display = 'block';
+                    modalCollageGrid.style.display = 'none';
+                    const img = document.createElement('img');
+                    img.src = data.image;
+                    img.alt = data.title;
+                    modalImageContainer.appendChild(img);
+                    
+                    downloadBtn.href = data.image;
+                    downloadBtn.download = `${data.title.replace(/ /g, '-')}.jpg`;
+                    downloadBtn.style.display = 'inline-flex';
+
+                } else if (type === 'collages') {
+                    modalImageContainer.style.display = 'none';
+                    modalCollageGrid.style.display = 'grid';
+                    // For collages, the main download button is hidden until an image is selected
+                    downloadBtn.style.display = 'none'; 
+
+                    data.images.forEach(imgSrc => {
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.alt = 'Collage piece';
+                        img.loading = 'lazy';
+                        img.onerror = function() { this.src='https://placehold.co/200x200/374151/F3F4F6?text=404' };
+
+                        // *** NEW FEATURE: Click to view a single collage image ***
+                        img.addEventListener('click', () => {
+                            modalCollageGrid.style.display = 'none';
+                            modalImageContainer.style.display = 'block';
+
+                            modalImageContainer.innerHTML = ''; // Clear previous content
+
+                            const largeImg = document.createElement('img');
+                            largeImg.src = imgSrc;
+                            largeImg.alt = "Selected collage image";
+                            modalImageContainer.appendChild(largeImg);
+                            
+                            // Dynamically create a "Back to Grid" button
+                            const backBtn = document.createElement('a');
+                            backBtn.textContent = '← Back to Grid';
+                            backBtn.style.cssText = 'display:block; margin: 0.5rem auto 1rem; cursor:pointer; font-weight:600; color:#FBBF24;';
+                            backBtn.onclick = () => {
+                                modalImageContainer.style.display = 'none';
+                                modalCollageGrid.style.display = 'grid';
+                                downloadBtn.style.display = 'none'; // Hide download button when back in grid
+                            };
+                            modalImageContainer.appendChild(backBtn);
+
+                            // Update and show download button for the single image
+                            downloadBtn.href = imgSrc;
+                            downloadBtn.download = `Collage_Image_${data.id}_${imgSrc.split('/').pop()}`;
+                            downloadBtn.style.display = 'inline-flex';
+                        });
+                        modalCollageGrid.appendChild(img);
+                    });
+                }
+                
+                const whatsappText = encodeURIComponent(`Hi, I'd like to order the "${data.title}" (Price: ${data.price}).`);
+                modalWhatsAppBtn.href = `https://wa.me/919251028070?text=${whatsappText}`;
+
+                modal.style.display = 'flex';
+            });
+        });
+
+        const closeModal = () => { modal.style.display = 'none'; }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+
+        const hamburger = document.querySelector('.hamburger');
+        const navUl = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => { navUl.classList.toggle('nav-active'); });
+    });
     </script>
 </body>
 </html>
