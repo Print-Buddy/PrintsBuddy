@@ -55,7 +55,7 @@
         }
 
         header {
-            background: linear-gradient(90deg, #06B6D4, #1E3A8A);
+            background: linear-gradient(90deg, #0D9488, #1E3A8A);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -76,6 +76,8 @@
             font-size: 1.5rem;
             font-weight: 700;
             color: #FBBF24 !important;
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
@@ -146,7 +148,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(6, 182, 212, 0.8), rgba(30, 58, 138, 0.8));
+            background: linear-gradient(180deg, rgba(13, 148, 136, 0.8), rgba(30, 58, 138, 0.8));
             z-index: 1;
         }
 
@@ -217,22 +219,6 @@
             margin-bottom: 2rem;
         }
 
-        .impact-card {
-            background: #374151;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            color: #F3F4F6 !important;
-            min-height: 150px;
-        }
-
-        .impact-card .counter {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #06B6D4 !important;
-        }
-
         .service-card {
             background: #374151;
             padding: 1.5rem;
@@ -270,7 +256,7 @@
 
         .card-back {
             transform: rotateY(180deg);
-            background: #06B6D4;
+            background: #0D9488;
             border-radius: 10px;
         }
 
@@ -295,7 +281,7 @@
         }
 
         .pricing-table th {
-            background: #06B6D4;
+            background: #0D9488;
             color: #F3F4F6 !important;
             font-weight: 600;
         }
@@ -360,7 +346,7 @@
             padding: 1rem;
             cursor: pointer;
             font-weight: 600;
-            background: #06B6D4;
+            background: #0D9488;
             color: #F3F4F6 !important;
             display: flex;
             justify-content: space-between;
@@ -408,7 +394,7 @@
         }
 
         footer {
-            background: linear-gradient(90deg, #1E3A8A, #06B6D4);
+            background: linear-gradient(90deg, #1E3A8A, #0D9488);
             color: #F3F4F6 !important;
             text-align: center;
             padding: 2rem 1rem;
@@ -435,7 +421,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             border: 4px solid #FBBF24;
-            border-top: 4px solid #06B6D4;
+            border-top: 4px solid #0D9488;
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -494,10 +480,6 @@
                 font-size: 1.8rem;
             }
 
-            .impact-card .counter {
-                font-size: 1.5rem;
-            }
-
             .pricing-table table {
                 display: flex;
                 flex-direction: column;
@@ -538,7 +520,7 @@
     <div class="loading-spinner" id="spinner"></div>
     <header>
         <nav>
-            <div class="logo">Print$Buddy 🖨️</div>
+            <div class="logo"><img src="https://i.ibb.co/NdzKLZMD/photo-2025-08-29-16-57-25.jpg" alt="Print$Buddy Logo" style="height: 40px; display: inline-block; margin-right: 10px;">Print$Buddy 🖨️</div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -573,7 +555,7 @@
                 </div>
                 <div class="text-lg">
                     <h3 class="text-xl font-semibold mb-3 text-cyan-500">Our Story</h3>
-                    <p>Founded in 2025 by MNIT students, Print$Buddy started as a late-night printing solution for our peers. Today, we’re proud to serve the entire MNIT community with quality prints and delivery.</p>
+                    <p>Founded in 2024 by MNIT students, Print$Buddy started as a late-night printing solution for our peers. Today, we’re proud to serve the entire MNIT community with quality prints and delivery.</p>
                 </div>
                 <div class="text-lg">
                     <h3 class="text-xl font-semibold mb-3 text-cyan-500">Why Choose Us?</h3>
@@ -582,28 +564,6 @@
                 <div class="text-lg">
                     <h3 class="text-xl font-semibold mb-3 text-cyan-500">Community Commitment</h3>
                     <p>We’re dedicated to supporting MNIT’s vibrant student community. From sponsoring club events to offering student discounts, Print$Buddy is more than just printing—it’s about building connections.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="impact">
-            <h2>Our Impact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="impact-card">
-                    <div class="counter" data-target="500">0</div>
-                    <p>Happy Customers</p>
-                </div>
-                <div class="impact-card">
-                    <div class="counter" data-target="120">0</div>
-                    <p>Monthly Users</p>
-                </div>
-                <div class="impact-card">
-                    <div class="counter" data-target="10000">0</div>
-                    <p>Pages Printed</p>
-                </div>
-                <div class="impact-card">
-                    <div class="counter" data-target="50">0</div>
-                    <p>Posters Designed</p>
                 </div>
             </div>
         </section>
@@ -618,7 +578,7 @@
                             <p>High-quality B&W and color prints for assignments, reports, and notes.</p>
                         </div>
                         <div class="card-back">
-                            <p>Starting at ₹4/page for B&W, ₹14/page for color. Supports PDF, DOCX, and more.</p>
+                            <p>Starting at ₹4/page for B&W, ₹15/page for color. Supports PDF, DOCX, and more.</p>
                         </div>
                     </div>
                 </div>
@@ -659,10 +619,10 @@
                     <div class="card-inner">
                         <div class="card-front">
                             <h3 class="text-lg font-semibold text-cyan-500">Campus Delivery</h3>
-                            <p>Delivery to girls’ hostels; </p>
+                            <p>Delivery to all hostels in MNIT.</p>
                         </div>
                         <div class="card-back">
-                            <p>delivery for girls’ hostels. Same-day Instant delivery for orders before 2AM.</p>
+                            <p>Free delivery for boys' hostels. ₹15 for girls' hostels.</p>
                         </div>
                     </div>
                 </div>
@@ -688,7 +648,7 @@
                         </tr>
                         <tr>
                             <td>Color Printing</td>
-                            <td>₹14/page</td>
+                            <td>₹15/page</td>
                             <td>Vibrant color prints, A4 size</td>
                         </tr>
                         <tr>
@@ -697,9 +657,14 @@
                             <td>Custom or pre-designed posters</td>
                         </tr>
                         <tr>
-                            <td>Campus Delivery</td>
-                            <td>₹order (girls’ hostels)</td>
-                            <td>Delivery to girls’ hostels;  </td>
+                            <td>Campus Delivery (Boys)</td>
+                            <td>Free</td>
+                            <td>Delivery to all boys' hostels.</td>
+                        </tr>
+                        <tr>
+                            <td>Campus Delivery (Girls)</td>
+                            <td>₹15/order</td>
+                            <td>Delivery to all girls' hostels.</td>
                         </tr>
                         <tr>
                             <td>Bulk Discount</td>
@@ -780,7 +745,7 @@
             </div>
             <div class="faq-item">
                 <div class="faq-question">How much is the delivery fee? <span>▼</span></div>
-                <div class="faq-answer">Delivery to girls’ hostels .</div>
+                <div class="faq-answer">Delivery to boys' hostels is free. For girls' hostels, there is a ₹15 delivery fee.</div>
             </div>
             <div class="faq-item">
                 <div class="faq-question">What are your operating hours? <span>▼</span></div>
@@ -796,22 +761,22 @@
             <h2>Meet Our Team</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="team-card">
-                    <img src="https://source.unsplash.com/random/150x150?person,man,1" alt="Toshu">
+                    <img src="https://i.ibb.co/tT4yk05b/download.jpg" alt="Toshu">
                     <h3 class="text-lg font-semibold text-cyan-500">Toshu</h3>
                     <p>Operations Lead</p>
-                    <p class="text-gray-400">B.Tech Metallurgical Engineering, 4th Year, oversees printing and operations for top-quality output.</p>
+                    <p class="text-gray-400">B.Tech Metallurgical Engineering, 4th Year</p>
                 </div>
                 <div class="team-card">
-                    <img src="https://source.unsplash.com/random/150x150?person,man,2" alt="Prkiya">
+                    <img src="https://i.ibb.co/tT4yk05b/download.jpg" alt="Prkiya">
                     <h3 class="text-lg font-semibold text-cyan-500">Prkiya</h3>
                     <p>Design & Marketing Lead</p>
-                    <p class="text-gray-400">B.Tech CSE, 4th Year, crafts stunning poster designs and drives promotions.</p>
+                    <p class="text-gray-400">B.Tech CSE, 4th Year</p>
                 </div>
                 <div class="team-card">
-                    <img src="https://source.unsplash.com/random/150x150?person,man,3" alt="Ashu">
+                    <img src="https://i.ibb.co/tT4yk05b/download.jpg" alt="Ashu">
                     <h3 class="text-lg font-semibold text-cyan-500">Ashu</h3>
                     <p>Logistics & Customer Support Lead</p>
-                    <p class="text-gray-400">B.Tech CSE, 4th Year, manages deliveries and WhatsApp support.</p>
+                    <p class="text-gray-400">B.Tech CSE, 4th Year</p>
                 </div>
             </div>
         </section>
@@ -837,10 +802,9 @@
 
     <footer>
         <p> MNIT Jaipur</p>
-        <p>🚚 Delivery: Girls Hostels </p>
+        <p>🚚 Delivery: All Hostels</p>
         <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.space">support@printbuddy.space</a></p>
-        <p><a href="https://maps.google.com">Find us on Google Maps</a></p>
-        <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
+        <p>&copy; 2024 Print$Buddy. All rights reserved.</p>
     </footer>
 
     <a href="https://wa.me/919251028070?text=Hi,%20I%27d%20like%20to%20place%20an%20order%20for%20printing." class="whatsapp-float">
@@ -903,15 +867,6 @@
                     gsap.from('#hero p', { opacity: 0, y: 20, duration: 0.6, delay: 0.1 });
                     gsap.from('.whatsapp-btn', { opacity: 0, y: 20, duration: 0.6, delay: 0.2 });
 
-                    gsap.utils.toArray('.impact-card').forEach(card => {
-                        gsap.from(card, {
-                            scrollTrigger: { trigger: card, start: 'top 90%' },
-                            opacity: 0,
-                            y: 20,
-                            duration: 0.6
-                        });
-                    });
-
                     gsap.utils.toArray('.service-card').forEach(card => {
                         gsap.from(card, {
                             scrollTrigger: { trigger: card, start: 'top 90%' },
@@ -956,13 +911,6 @@
                         opacity: 0,
                         y: 20,
                         duration: 0.6
-                    });
-
-                    gsap.from('.whatsapp-float', {
-                        opacity: 0,
-                        y: 50,
-                        duration: 0.6,
-                        delay: 0.5
                     });
 
                     gsap.utils.toArray('.counter').forEach(counter => {
