@@ -15,9 +15,15 @@
             margin: 0;
             overflow-x: hidden;
         }
-        header { background: linear-gradient(90deg, #06B6D4, #1E3A8A); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+        header { background: linear-gradient(90deg, #0D9488, #1E3A8A); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
         nav { max-width: 1400px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
-        nav .logo { font-size: 1.5rem; font-weight: 700; color: #FBBF24 !important; }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FBBF24 !important;
+            display: flex;
+            align-items: center;
+        }
         nav ul { display: flex; list-style: none; gap: 1rem; flex-direction: row; }
         nav a { color: #F3F4F6 !important; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
         nav a:hover { color: #FBBF24 !important; }
@@ -26,10 +32,10 @@
         .nav-active { display: flex !important; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: #1E3A8A; padding: 1rem; z-index: 999; }
         section { max-width: 1400px; margin: 3rem auto; padding: 0 1rem; }
         h2 { font-size: 2rem; font-weight: 700; color: #FBBF24 !important; text-align: center; margin-bottom: 2rem; }
-        h3.section-subtitle { font-size: 1.5rem; font-weight: 600; color: #06B6D4 !important; text-align: center; margin-top: 2.5rem; margin-bottom: 1.5rem; }
+        h3.section-subtitle { font-size: 1.5rem; font-weight: 600; color: #0D9488 !important; text-align: center; margin-top: 2.5rem; margin-bottom: 1.5rem; }
         .whatsapp-btn { background-color: #FBBF24; color: #1E3A8A !important; padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: transform 0.3s ease, background-color 0.3s ease; min-height: 48px; display: inline-flex; align-items: center; justify-content: center; }
         .whatsapp-btn:hover { background-color: #EC4899; transform: scale(1.05); }
-        footer { background: linear-gradient(90deg, #1E3A8A, #06B6D4); color: #F3F4F6 !important; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
+        footer { background: linear-gradient(90deg, #1E3A8A, #0D9488); color: #F3F4F6 !important; text-align: center; padding: 2rem 1rem; margin-top: 3rem; }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
         .gallery-item { background: #374151; border-radius: 10px; overflow: hidden; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; position: relative; }
         .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); }
@@ -44,7 +50,7 @@
         #modal-collage-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; max-height: 55vh; overflow-y: auto; margin-bottom: 1rem; padding: 10px; background: #1f2937; border-radius: 8px; }
         #modal-collage-grid img { width: 100%; border-radius: 5px; cursor: pointer; transition: transform 0.2s ease; }
         #modal-collage-grid img:hover { transform: scale(1.05); }
-        #modal-title { color: #06B6D4 !important; }
+        #modal-title { color: #0D9488 !important; }
         #modal-price { color: #FBBF24 !important; }
         #modal-description { margin-top: 1rem; margin-bottom: 1.5rem; font-size: 1.1rem; color: #cbd5e0; text-align: left; }
         .modal-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
@@ -64,7 +70,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Print$Buddy 🖨️</div>
+            <div class="logo"><img src="https://i.ibb.co/NdzKLZMD/photo-2025-08-29-16-57-25.jpg" alt="Print$Buddy Logo" style="height: 40px; display: inline-block; margin-right: 10px;">Print$Buddy 🖨️</div>
             <div class="hamburger"><span></span><span></span><span></span></div>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -105,10 +111,10 @@
     </div>
 
     <footer>
-        <p>📍 MNIT Jaipur</p>
-        <p>🚚 Delivery: Girls Hostels </p>
+        <p> MNIT Jaipur</p>
+        <p>🚚 Delivery: All Hostels</p>
         <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a> | <a href="mailto:support@printbuddy.space">support@printbuddy.space</a></p>
-        <p>&copy; 2025 Print$Buddy. All rights reserved.</p>
+        <p>&copy; 2024 Print$Buddy. All rights reserved.</p>
     </footer>
 
     <script>
