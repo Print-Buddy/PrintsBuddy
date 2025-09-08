@@ -41,16 +41,7 @@
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyCmpotEkuXVl81_dqPD2gbchG8EYF9ASXc",
-            authDomain: "printbuddyadmin.firebaseapp.com",
-            projectId: "printbuddyadmin",
-            storageBucket: "printbuddyadmin.firebasestorage.app",
-            messagingSenderId: "660193347005",
-            appId: "1:660193347005:web:cb1735e8268174d2bb3ed4",
-            measurementId: "G-G1RPHMN9GJ"
-        };
+        import { firebaseConfig } from "./firebase-config.js";
 
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);

@@ -813,6 +813,23 @@
         </svg>
     </a>
 
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+        import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+        import { firebaseConfig } from "./admin/firebase-config.js";
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        // Log a visit
+        const visitsRef = ref(database, 'visits');
+        push(visitsRef, {
+            timestamp: serverTimestamp(),
+            page: window.location.pathname
+        });
+    </script>
+
     <script>
         document.body.classList.remove('no-js');
         const spinner = document.getElementById('spinner');
