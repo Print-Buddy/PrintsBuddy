@@ -516,16 +516,10 @@
         }
     </style>
 </head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G1RPHMN9GJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-G1RPHMN9GJ');
-</script>
 <body class="no-js">
+    <div id="alert-banner" class="hidden sticky top-0 bg-yellow-500 text-black text-center p-2 z-50">
+        <p id="alert-banner-message"></p>
+    </div>
     <div class="loading-spinner" id="spinner"></div>
     <header>
         <nav>
@@ -650,36 +644,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>B&W Printing</td>
-                            <td>₹4/page</td>
-                            <td>High-quality black and white prints, A4 size</td>
-                        </tr>
-                        <tr>
-                            <td>Color Printing</td>
-                            <td>₹15/page</td>
-                            <td>Vibrant color prints, A4 size</td>
-                        </tr>
-                        <tr>
-                            <td>A4 Posters</td>
-                            <td>₹40/poster</td>
-                            <td>Custom or pre-designed posters</td>
-                        </tr>
-                        <tr>
-                            <td>Campus Delivery (Boys)</td>
-                            <td>Free</td>
-                            <td>Delivery to all boys' hostels.</td>
-                        </tr>
-                        <tr>
-                            <td>Campus Delivery (Girls)</td>
-                            <td>₹15/order</td>
-                            <td>Delivery to all girls' hostels.</td>
-                        </tr>
-                        <tr>
-                            <td>Bulk Discount</td>
-                            <td>10% off</td>
-                            <td>For orders over 100 pages</td>
-                        </tr>
+                        <!-- Pricing data will be loaded here dynamically -->
                     </tbody>
                 </table>
             </div>
@@ -824,21 +789,51 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-        import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
         import { firebaseConfig } from "./admin/firebase-config.js";
 
-        // Initialize Firebase
+        // --- Initialize Firebase App (only once) ---
         const app = initializeApp(firebaseConfig);
         const database = getDatabase(app);
 
-        // Log a visit
-        const visitsRef = ref(database, 'visits');
-        push(visitsRef, {
-            timestamp: serverTimestamp(),
-            page: window.location.pathname
+        // --- Alert Banner Logic ---
+        const alertRef = ref(database, 'alert/message');
+        const alertBanner = document.getElementById('alert-banner');
+        const alertBannerMessage = document.getElementById('alert-banner-message');
+
+        onValue(alertRef, (snapshot) => {
+            const message = snapshot.val();
+            if (message && alertBanner) {
+                alertBannerMessage.textContent = message;
+                alertBanner.classList.remove('hidden');
+            } else if (alertBanner) {
+                alertBanner.classList.add('hidden');
+            }
+        });
+
+        // --- Pricing Table Logic ---
+        const pricingRef = ref(database, 'pricing');
+        const pricingTableBody = document.querySelector('#pricing .pricing-table tbody');
+
+        onValue(pricingRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data && pricingTableBody) {
+                pricingTableBody.innerHTML = ''; // Clear existing rows
+                const sortedData = Object.values(data).sort((a, b) => a.order - b.order);
+
+                sortedData.forEach(item => {
+                    const row = `
+                        <tr>
+                            <td>${item.service}</td>
+                            <td>${item.price}</td>
+                            <td>${item.details}</td>
+                        </tr>
+                    `;
+                    pricingTableBody.insertAdjacentHTML('beforeend', row);
+                });
+            }
         });
     </script>
-
     <script>
         document.body.classList.remove('no-js');
         const spinner = document.getElementById('spinner');

@@ -6,5 +6,5 @@ export const firebaseConfig = {
     messagingSenderId: "660193347005",
     appId: "1:660193347005:web:cb1735e8268174d2bb3ed4",
     measurementId: "G-G1RPHMN9GJ",
-    databaseURL: "https://printbuddyadmin-default-rtdb.firebaseio.com"
+    databaseURL: "https://printbuddyadmin-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
