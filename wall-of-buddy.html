@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="Print$Buddy's Wall of Buddy - Explore our collection of anime posters, wall collages, and custom prints available for order at MNIT Jaipur.">
+    <meta name="keywords" content="MNIT Jaipur printing, student printing, late night printing, anime posters, Print Buddy">
+    <meta property="og:title" content="Wall of Buddy - Print$Buddy @ MNIT Jaipur">
+    <meta property="og:description" content="Explore our collection of anime posters, wall collages, and custom prints available for order at MNIT Jaipur.">
+    <meta property="og:image" content="https://i.ibb.co/NdzKLZMD/photo-2025-08-29-16-57-25.jpg">
+    <meta property="og:url" content="https://print-buddy.github.io/Print-Buddy/wall-of-buddy.html">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Wall of Buddy - Print$Buddy @ MNIT Jaipur</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -83,9 +89,11 @@
 
     <main>
         <section id="wall-of-buddy">
-            <h2>The Wall of Buddy</h2>
+            <h1 class="text-4xl font-bold text-yellow-400 text-center mb-8">The Wall of Buddy</h1>
             <p class="text-center mb-8 max-w-3xl mx-auto">Explore our curated collection of posters and collages. Find the perfect design to personalize your space. Click any item to see details and order on WhatsApp!</p>
             
+            <input type="text" id="search-input" placeholder="Search posters by title or character..." class="w-full max-w-md mx-auto block mb-8 p-3 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:border-yellow-400 placeholder-gray-400 shadow-md">
+
             <h3 class="section-subtitle">Posters & Art Prints</h3>
             <div id="posters-art-grid" class="gallery-grid"></div>
             
@@ -261,6 +269,21 @@
         const hamburger = document.querySelector('.hamburger');
         const navUl = document.querySelector('nav ul');
         hamburger.addEventListener('click', () => { navUl.classList.toggle('nav-active'); });
+
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                const type = item.dataset.type;
+                const id = item.dataset.id;
+                const data = galleryData[type].find(d => d.id === id);
+                if (data && (data.title.toLowerCase().includes(query) || data.description.toLowerCase().includes(query))) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
     });
     </script>
 </body>
