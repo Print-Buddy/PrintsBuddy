@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake - Print$Buddy Arcade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #F3F4F6 !important;
+            margin: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header { background: linear-gradient(90deg, #0D9488, #1E3A8A); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        nav .logo { font-size: 1.5rem; font-weight: 700; color: #FBBF24 !important; display: flex; align-items: center; }
+        nav ul { display: flex; list-style: none; gap: 1rem; flex-direction: row; }
+        nav a { color: #F3F4F6 !important; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        nav a:hover { color: #FBBF24 !important; }
+
+        main { flex: 1; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; }
+
+        footer { background: #1F2937; color: #9CA3AF !important; text-align: center; padding: 2rem; border-top: 2px solid #0D9488; margin-top: auto;}
+        footer p { margin-bottom: 0.5rem; }
+        footer a { color: #FBBF24 !important; text-decoration: none; }
+
+        #game-board {
+            background-color: #1F2937;
+            border: 4px solid #0D9488;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            image-rendering: pixelated;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .controls-grid button {
+            background: #374151;
+            border: 2px solid #4B5563;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+        }
+        .controls-grid button:active { background: #0D9488; }
+        #up-btn { grid-column: 2; }
+        #left-btn { grid-column: 1; }
+        #down-btn { grid-column: 2; }
+        #right-btn { grid-column: 3; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="https://i.ibb.co/NdzKLZMD/photo-2025-08-29-16-57-25.jpg" alt="Print$Buddy Logo" style="height: 40px; display: inline-block; margin-right: 10px;">Print$Buddy 🖨️</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wall-of-buddy.html">Wall of Buddy</a></li>
+                <li><a href="games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="w-full max-w-2xl mb-4 flex justify-between items-center">
+            <a href="games.html" class="inline-flex items-center text-cyan-400 hover:text-yellow-400 transition-colors font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back
+            </a>
+            <div class="text-2xl font-bold text-yellow-400">Score: <span id="score">0</span></div>
+        </div>
+
+        <h1 class="text-3xl md:text-4xl font-bold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">Retro Snake</h1>
+
+        <canvas id="game-board" width="400" height="400"></canvas>
+
+        <!-- Mobile Controls (Visible only on small screens) -->
+        <div class="controls-grid md:hidden w-full max-w-xs mx-auto">
+            <button id="up-btn">⬆️</button>
+            <button id="left-btn">⬅️</button>
+            <button id="down-btn">⬇️</button>
+            <button id="right-btn">➡️</button>
+        </div>
+
+        <div class="mt-8 text-center text-gray-400">
+            <p class="hidden md:block">Use Arrow Keys or WASD to move.</p>
+            <p>Eat the printed documents (📄) to grow!</p>
+            <button id="restart-btn" class="mt-4 px-6 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-full font-bold transition-colors">Start / Restart Game</button>
+        </div>
+    </main>
+
+    <footer>
+        <p> MNIT Jaipur</p>
+        <p>🚚 Delivery: All Hostels</p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a></p>
+        <p>&copy; 2024 Print$Buddy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('game-board');
+        const ctx = canvas.getContext('2d');
+        const scoreElement = document.getElementById('score');
+        const restartBtn = document.getElementById('restart-btn');
+
+        const gridSize = 20;
+        const tileCount = canvas.width / gridSize;
+
+        let snake = [];
+        let dx = 0;
+        let dy = 0;
+        let foodX;
+        let foodY;
+        let score = 0;
+        let gameLoop;
+        let isGameOver = false;
+
+        function initGame() {
+            snake = [
+                {x: 10, y: 10},
+            ];
+            dx = 0;
+            dy = 0;
+            score = 0;
+            scoreElement.innerText = score;
+            isGameOver = false;
+            placeFood();
+            if(gameLoop) clearInterval(gameLoop);
+            gameLoop = setInterval(drawGame, 100);
+        }
+
+        function drawGame() {
+            clearScreen();
+            if (isGameOver) {
+                ctx.fillStyle = "white";
+                ctx.font = "30px Inter";
+                ctx.textAlign = "center";
+                ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2);
+                ctx.font = "20px Inter";
+                ctx.fillText("Press Restart to try again", canvas.width / 2, canvas.height / 2 + 40);
+                return;
+            }
+
+            moveSnake();
+            checkCollision();
+            drawFood();
+            drawSnake();
+        }
+
+        function clearScreen() {
+            ctx.fillStyle = '#1F2937';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function drawSnake() {
+            snake.forEach((part, index) => {
+                ctx.fillStyle = index === 0 ? '#06B6D4' : '#22D3EE'; // Cyan head, lighter body
+                ctx.fillRect(part.x * gridSize, part.y * gridSize, gridSize - 2, gridSize - 2);
+            });
+        }
+
+        function moveSnake() {
+            if (dx === 0 && dy === 0) return; // Haven't started moving
+
+            const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+            snake.unshift(head);
+
+            if (head.x === foodX && head.y === foodY) {
+                score += 10;
+                scoreElement.innerText = score;
+                placeFood();
+            } else {
+                snake.pop();
+            }
+        }
+
+        function checkCollision() {
+            const head = snake[0];
+
+            // Wall collision
+            if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCount) {
+                isGameOver = true;
+            }
+
+            // Self collision
+            for (let i = 1; i < snake.length; i++) {
+                if (head.x === snake[i].x && head.y === snake[i].y) {
+                    isGameOver = true;
+                }
+            }
+        }
+
+        function drawFood() {
+            // Draw a tiny "document" emoji or shape
+            ctx.fillStyle = '#FBBF24'; // Yellow color for Print$Buddy theme
+            ctx.fillRect(foodX * gridSize, foodY * gridSize, gridSize - 2, gridSize - 2);
+            // Add lines to look like text
+            ctx.fillStyle = '#000';
+            ctx.fillRect(foodX * gridSize + 4, foodY * gridSize + 4, gridSize - 10, 2);
+            ctx.fillRect(foodX * gridSize + 4, foodY * gridSize + 8, gridSize - 10, 2);
+            ctx.fillRect(foodX * gridSize + 4, foodY * gridSize + 12, gridSize - 14, 2);
+        }
+
+        function placeFood() {
+            foodX = Math.floor(Math.random() * tileCount);
+            foodY = Math.floor(Math.random() * tileCount);
+
+            // Ensure food doesn't spawn on snake
+            snake.forEach(part => {
+                if (part.x === foodX && part.y === foodY) placeFood();
+            });
+        }
+
+        function changeDirection(newDx, newDy) {
+            // Prevent 180 degree turns
+            if ((newDx === 1 && dx === -1) || (newDx === -1 && dx === 1) ||
+                (newDy === 1 && dy === -1) || (newDy === -1 && dy === 1)) {
+                return;
+            }
+            // Start game if hasn't started
+            if(dx === 0 && dy === 0 && !isGameOver) {
+                dx = newDx; dy = newDy;
+            } else {
+                dx = newDx;
+                dy = newDy;
+            }
+        }
+
+        // Keyboard Controls
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'w') changeDirection(0, -1);
+            if (e.key === 'ArrowDown' || e.key === 's') changeDirection(0, 1);
+            if (e.key === 'ArrowLeft' || e.key === 'a') changeDirection(-1, 0);
+            if (e.key === 'ArrowRight' || e.key === 'd') changeDirection(1, 0);
+        });
+
+        // Mobile Controls
+        document.getElementById('up-btn').addEventListener('click', () => changeDirection(0, -1));
+        document.getElementById('down-btn').addEventListener('click', () => changeDirection(0, 1));
+        document.getElementById('left-btn').addEventListener('click', () => changeDirection(-1, 0));
+        document.getElementById('right-btn').addEventListener('click', () => changeDirection(1, 0));
+
+        restartBtn.addEventListener('click', initGame);
+
+        // Initial Draw (Waiting state)
+        clearScreen();
+        ctx.fillStyle = "white";
+        ctx.font = "20px Inter";
+        ctx.textAlign = "center";
+        ctx.fillText("Press Start to Play", canvas.width / 2, canvas.height / 2);
+
+    </script>
+</body>
+</html>

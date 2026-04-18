@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 - Print$Buddy Arcade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827;
+            color: #F3F4F6 !important;
+            margin: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header { background: linear-gradient(90deg, #0D9488, #1E3A8A); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
+        nav { max-width: 1400px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; position: relative; }
+        nav .logo { font-size: 1.5rem; font-weight: 700; color: #FBBF24 !important; display: flex; align-items: center; }
+        nav ul { display: flex; list-style: none; gap: 1rem; flex-direction: row; }
+        nav a { color: #F3F4F6 !important; text-decoration: none; font-weight: 600; transition: color 0.3s ease; }
+        nav a:hover { color: #FBBF24 !important; }
+
+        main { flex: 1; max-width: 1400px; width: 100%; margin: 2rem auto; padding: 0 1rem; display: flex; flex-direction: column; align-items: center; }
+
+        footer { background: #1F2937; color: #9CA3AF !important; text-align: center; padding: 2rem; border-top: 2px solid #0D9488; margin-top: auto;}
+        footer p { margin-bottom: 0.5rem; }
+        footer a { color: #FBBF24 !important; text-decoration: none; }
+
+        .game-container {
+            width: 100%;
+            max-width: 400px;
+            background: #374151;
+            padding: 10px;
+            border-radius: 8px;
+            touch-action: none; /* Prevent scrolling on mobile swipe */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: #1F2937;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .grid-cell {
+            width: 100%;
+            aspect-ratio: 1;
+            background: rgba(238, 228, 218, 0.1);
+            border-radius: 4px;
+        }
+
+        .tile {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 100ms ease-in-out;
+            transition-property: transform;
+            width: calc(25% - 12.5px); /* Calculate width based on gap */
+            aspect-ratio: 1;
+        }
+
+        /* Number Colors */
+        .tile-2 { background: #0D9488; color: white; }
+        .tile-4 { background: #14B8A6; color: white; }
+        .tile-8 { background: #0284C7; color: white; }
+        .tile-16 { background: #0369A1; color: white; }
+        .tile-32 { background: #4F46E5; color: white; }
+        .tile-64 { background: #4338CA; color: white; }
+        .tile-128 { background: #D97706; color: white; box-shadow: 0 0 10px rgba(217,119,6,0.5); font-size: 1.5rem;}
+        .tile-256 { background: #B45309; color: white; box-shadow: 0 0 15px rgba(180,83,9,0.5); font-size: 1.5rem;}
+        .tile-512 { background: #EA580C; color: white; box-shadow: 0 0 20px rgba(234,88,12,0.5); font-size: 1.5rem;}
+        .tile-1024 { background: #C2410C; color: white; box-shadow: 0 0 25px rgba(194,65,12,0.5); font-size: 1.2rem;}
+        .tile-2048 { background: #FBBF24; color: #111827; box-shadow: 0 0 30px rgba(251,191,36,0.8); font-size: 1.2rem;}
+
+        .game-over {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(17, 24, 39, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border-radius: 8px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo"><img src="https://i.ibb.co/NdzKLZMD/photo-2025-08-29-16-57-25.jpg" alt="Print$Buddy Logo" style="height: 40px; display: inline-block; margin-right: 10px;">Print$Buddy 🖨️</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="wall-of-buddy.html">Wall of Buddy</a></li>
+                <li><a href="games.html">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="w-full max-w-2xl mb-4 flex justify-between items-center">
+            <a href="games.html" class="inline-flex items-center text-cyan-400 hover:text-yellow-400 transition-colors font-semibold">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Back
+            </a>
+            <div class="text-xl font-bold bg-gray-800 px-4 py-2 rounded">Score: <span id="score" class="text-yellow-400">0</span></div>
+        </div>
+
+        <h1 class="text-4xl font-bold text-center mb-6 text-white">2048</h1>
+
+        <div class="game-container">
+            <div class="grid-container" id="grid">
+                <!-- 16 cells -->
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+
+                <!-- Game Over Overlay -->
+                <div class="game-over" id="game-over">
+                    <h2 class="text-3xl font-bold text-white mb-4">Game Over!</h2>
+                    <button onclick="setupGame()" class="bg-teal-600 hover:bg-teal-500 text-white font-bold py-2 px-6 rounded-full transition-colors">Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-gray-400">
+            <p>Use Arrow Keys or Swipe to move tiles.</p>
+            <p>Tiles with the same number merge into one when they touch.</p>
+            <button onclick="setupGame()" class="mt-4 px-6 py-2 border border-gray-600 hover:border-gray-400 rounded transition-colors">Restart Game</button>
+        </div>
+    </main>
+
+    <footer>
+        <p> MNIT Jaipur</p>
+        <p>🚚 Delivery: All Hostels</p>
+        <p><a href="https://wa.me/919251028070">WhatsApp: 9251028070</a></p>
+        <p>&copy; 2024 Print$Buddy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const gridElement = document.getElementById('grid');
+        const scoreElement = document.getElementById('score');
+        const gameOverElement = document.getElementById('game-over');
+
+        let board = [];
+        let score = 0;
+        let tileElements = [];
+
+        function setupGame() {
+            board = [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+            ];
+            score = 0;
+            scoreElement.innerText = score;
+            gameOverElement.style.display = 'none';
+
+            // Clear old tiles
+            tileElements.forEach(tile => tile.remove());
+            tileElements = [];
+
+            addRandomTile();
+            addRandomTile();
+            renderBoard();
+        }
+
+        function addRandomTile() {
+            let emptyCells = [];
+            for (let r = 0; r < 4; r++) {
+                for (let c = 0; c < 4; c++) {
+                    if (board[r][c] === 0) {
+                        emptyCells.push({r, c});
+                    }
+                }
+            }
+            if (emptyCells.length > 0) {
+                let randomCell = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+                board[randomCell.r][randomCell.c] = Math.random() < 0.9 ? 2 : 4;
+            }
+        }
+
+        function renderBoard() {
+            // Update existing or create new tiles
+            let newTileElements = [];
+
+            for (let r = 0; r < 4; r++) {
+                for (let c = 0; c < 4; c++) {
+                    let value = board[r][c];
+                    if (value !== 0) {
+                        // Find if tile already exists at this pos to avoid recreating DOM elements unnecessarily (simplified for this clone)
+                        let tile = document.createElement('div');
+                        tile.classList.add('tile', `tile-${value}`);
+                        tile.innerText = value;
+
+                        // Calculate position based on grid (assuming 10px gap, 4 columns)
+                        // Cell width = 25% - 12.5px. Gap = 10px. Padding = 10px.
+                        // Left = 10px padding + c * (width + 10px gap)
+                        // This logic relies on CSS translate to position over the grid.
+                        const xPos = (c * 100);
+                        const yPos = (r * 100);
+
+                        // Using percentages for translate to work with responsive grid
+                        // width is ~25%, gap is 10px.
+                        // We'll calculate left/top percentages based on standard 4x4 layout.
+                        tile.style.left = `calc(${c * 25}% + ${c > 0 ? (c*2.5) : 0}px + 10px)`;
+                        tile.style.top = `calc(${r * 25}% + ${r > 0 ? (r*2.5) : 0}px + 10px)`;
+
+                        // Simplified positioning logic: Just attach to the DOM and let absolute pos handle it
+                        gridElement.appendChild(tile);
+                        newTileElements.push(tile);
+                    }
+                }
+            }
+
+            // Clean up old elements
+            tileElements.forEach(el => el.remove());
+            tileElements = newTileElements;
+        }
+
+        // Logic Helpers
+        function slide(row) {
+            row = row.filter(val => val); // Remove zeros
+            for (let i = 0; i < row.length - 1; i++) {
+                if (row[i] === row[i+1]) {
+                    row[i] *= 2;
+                    row[i+1] = 0;
+                    score += row[i];
+                }
+            }
+            row = row.filter(val => val); // Remove zeros again after merge
+            while (row.length < 4) {
+                row.push(0);
+            }
+            return row;
+        }
+
+        function slideLeft() {
+            let moved = false;
+            for (let r = 0; r < 4; r++) {
+                let row = board[r];
+                let newRow = slide(row);
+                if (row.join(',') !== newRow.join(',')) moved = true;
+                board[r] = newRow;
+            }
+            return moved;
+        }
+
+        function slideRight() {
+            let moved = false;
+            for (let r = 0; r < 4; r++) {
+                let row = board[r].slice().reverse();
+                let newRow = slide(row).reverse();
+                if (board[r].join(',') !== newRow.join(',')) moved = true;
+                board[r] = newRow;
+            }
+            return moved;
+        }
+
+        function slideUp() {
+            let moved = false;
+            for (let c = 0; c < 4; c++) {
+                let col = [board[0][c], board[1][c], board[2][c], board[3][c]];
+                let newCol = slide(col);
+                if (col.join(',') !== newCol.join(',')) moved = true;
+                for (let r = 0; r < 4; r++) {
+                    board[r][c] = newCol[r];
+                }
+            }
+            return moved;
+        }
+
+        function slideDown() {
+            let moved = false;
+            for (let c = 0; c < 4; c++) {
+                let col = [board[0][c], board[1][c], board[2][c], board[3][c]].reverse();
+                let newCol = slide(col).reverse();
+                if ([board[0][c], board[1][c], board[2][c], board[3][c]].join(',') !== newCol.join(',')) moved = true;
+                for (let r = 0; r < 4; r++) {
+                    board[r][c] = newCol[r];
+                }
+            }
+            return moved;
+        }
+
+        function checkGameOver() {
+            for (let r = 0; r < 4; r++) {
+                for (let c = 0; c < 4; c++) {
+                    if (board[r][c] === 0) return false;
+                    if (c < 3 && board[r][c] === board[r][c+1]) return false;
+                    if (r < 3 && board[r][c] === board[r+1][c]) return false;
+                }
+            }
+            return true;
+        }
+
+        function handleInput(e) {
+            let moved = false;
+            if (e.key === 'ArrowLeft') moved = slideLeft();
+            else if (e.key === 'ArrowRight') moved = slideRight();
+            else if (e.key === 'ArrowUp') moved = slideUp();
+            else if (e.key === 'ArrowDown') moved = slideDown();
+
+            if (moved) {
+                addRandomTile();
+                scoreElement.innerText = score;
+                renderBoard();
+                if (checkGameOver()) {
+                    gameOverElement.style.display = 'flex';
+                }
+            }
+        }
+
+        // Touch handling
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        gridElement.addEventListener('touchstart', e => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, {passive: false});
+
+        gridElement.addEventListener('touchmove', e => {
+            e.preventDefault(); // Prevent scrolling while swiping grid
+        }, {passive: false});
+
+        gridElement.addEventListener('touchend', e => {
+            if (!touchStartX || !touchStartY) return;
+
+            let touchEndX = e.changedTouches[0].clientX;
+            let touchEndY = e.changedTouches[0].clientY;
+
+            let dx = touchEndX - touchStartX;
+            let dy = touchEndY - touchStartY;
+
+            if (Math.abs(dx) > Math.abs(dy)) {
+                // Horizontal swipe
+                if (dx > 30) { slideRight() && afterMove(); }
+                else if (dx < -30) { slideLeft() && afterMove(); }
+            } else {
+                // Vertical swipe
+                if (dy > 30) { slideDown() && afterMove(); }
+                else if (dy < -30) { slideUp() && afterMove(); }
+            }
+
+            touchStartX = 0;
+            touchStartY = 0;
+        });
+
+        function afterMove() {
+            addRandomTile();
+            scoreElement.innerText = score;
+            renderBoard();
+            if (checkGameOver()) gameOverElement.style.display = 'flex';
+        }
+
+        document.addEventListener('keydown', handleInput);
+
+        // Init
+        setupGame();
+    </script>
+</body>
+</html>
