@@ -91,6 +91,10 @@
         </nav>
     </header>
 
+    <div class="bg-yellow-500 text-gray-900 text-center py-4 px-6 font-bold text-lg md:text-xl shadow-md border-b-4 border-yellow-600">
+        🎓 Print$Buddy is now Permanently Closed! We have graduated from college and successfully closed our printing business. Thank you so much for your incredible support! ❤️
+    </div>
+
     <main>
         <section id="wall-of-buddy">
             <h1 class="text-4xl font-bold text-yellow-400 text-center mb-8">The Wall of Buddy</h1>
@@ -116,9 +120,9 @@
             <p id="modal-description"></p>
             <div class="modal-buttons">
                 <a id="download-btn" class="download-btn" href="#" download>Download Image</a>
-                <a id="modal-whatsapp-btn" href="#" class="whatsapp-btn" target="_blank">Order on WhatsApp</a>
+                <button class="whatsapp-btn cursor-not-allowed opacity-75" disabled>Service Closed</button>
             </div>
-            <p class="instruction-text">Tip: Download the image and attach it in WhatsApp for faster service!</p>
+            <p class="instruction-text">Service closed - ordering is no longer available as we have graduated. 🎓</p>
         </div>
     </div>
 
@@ -210,7 +214,6 @@
         const modalCollageGrid = document.getElementById('modal-collage-grid');
         const modalDescription = document.getElementById('modal-description');
         const downloadBtn = document.getElementById('download-btn');
-        const modalWhatsAppBtn = document.getElementById('modal-whatsapp-btn');
 
         document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -282,9 +285,7 @@
                     });
                 }
 
-                const whatsappText = encodeURIComponent(`Hi, I'd like to order the "${data.title}" (Price: ${data.price}).`);
-                modalWhatsAppBtn.href = `https://wa.me/919251028070?text=${whatsappText}`;
-
+                // Modal WhatsApp button removed or disabled
                 modal.style.display = 'flex';
             });
         });
